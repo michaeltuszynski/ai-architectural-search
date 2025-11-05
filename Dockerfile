@@ -47,8 +47,9 @@ ENV STREAMLIT_BROWSER_GATHER_USAGE_STATS=false
 ENV STREAMLIT_SERVER_ENABLE_CORS=false
 ENV STREAMLIT_SERVER_ENABLE_XSRF_PROTECTION=false
 
-# Expose port (Railway will set PORT env var)
+# Default port (Railway will override with PORT env var)
+ENV PORT=8501
 EXPOSE $PORT
 
-# Run the application (Railway sets PORT automatically)
-CMD streamlit run app.py --server.port=$PORT --server.address=0.0.0.0
+# Run the application with Railway's PORT
+CMD ["sh", "-c", "streamlit run app.py --server.port=${PORT:-8501} --server.address=0.0.0.0"]
