@@ -41,14 +41,6 @@ RUN mkdir -p images logs
 
 # Set environment variables for production
 ENV PYTHONPATH=/app
-ENV STREAMLIT_SERVER_ADDRESS=0.0.0.0
-ENV STREAMLIT_SERVER_HEADLESS=true
-ENV STREAMLIT_BROWSER_GATHER_USAGE_STATS=false
-ENV STREAMLIT_SERVER_ENABLE_CORS=false
-ENV STREAMLIT_SERVER_ENABLE_XSRF_PROTECTION=false
 
-# Create startup script to handle PORT properly
-RUN echo '#!/bin/bash\necho "Starting with PORT: $PORT"\nstreamlit run app.py --server.port=${PORT:-8501} --server.address=0.0.0.0 --server.headless=true' > /start.sh && chmod +x /start.sh
-
-# Run the application using the startup script
-CMD ["/start.sh"]
+# Run the application - let Railway handle port mapping
+CMD ["streamlit", "run", "app.py", "--server.address=0.0.0.0"]
