@@ -42,5 +42,5 @@ RUN mkdir -p images logs
 # Set environment variables for production
 ENV PYTHONPATH=/app
 
-# Run the application using Python directly to avoid Railway's streamlit command injection
-CMD ["python", "app.py"]
+# Run the application with streamlit - app.py handles PORT configuration
+CMD ["streamlit", "run", "app.py", "--server.address=0.0.0.0"]

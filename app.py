@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 Entry point for cloud deployment (Hugging Face Spaces, Railway, etc.).
+This file runs the Streamlit app from src/web/app.py
 """
 
 import sys
@@ -22,27 +23,13 @@ os.environ.setdefault('MAX_RESULTS', '5')
 os.environ.setdefault('BATCH_SIZE', '16')
 os.environ.setdefault('MAX_IMAGE_SIZE', '256,256')
 
-# Start Streamlit programmatically to avoid Railway's command injection issues
-if __name__ == "__main__":
-    import streamlit.web.cli as stcli
-    
-    # Get port from Railway or use default
-    port = int(os.environ.get('PORT', 8501))
-    
-    # Configure Streamlit arguments
-    sys.argv = [
-        "streamlit",
-        "run",
-        __file__,
-        "--server.port", str(port),
-        "--server.address", "0.0.0.0",
-        "--server.headless", "true",
-        "--browser.gatherUsageStats", "false"
-    ]
-    
-    # Start Streamlit
-    stcli.main()
+# Handle Railway's PORT environment variable
+if 'PORT' in os.environ:
+    port = int(os.environ['PORT'])
+    os.environ['STREAMLIT_SERVER_PORT'] = str(port)
+    os.environ['STREAMLIT_SERVER_ADDRESS'] = '0.0.0.0'
+    os.environ['STREAMLIT_SERVER_HEADLESS'] = 'true'
 
-# This is the actual Streamlit app content
+# Import and run the main Streamlit application
 from src.web.app import main
 main()
