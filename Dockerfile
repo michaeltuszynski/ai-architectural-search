@@ -42,5 +42,8 @@ RUN mkdir -p images logs
 # Set environment variables for production
 ENV PYTHONPATH=/app
 
-# Run the application with streamlit - app.py handles PORT configuration
-CMD ["streamlit", "run", "app.py", "--server.address=0.0.0.0"]
+# Create entrypoint script that handles Railway's PORT variable
+RUN printf '#!/bin/sh\nexec streamlit run app.py --server.port=${PORT:-8501} --server.address=0.0.0.0\n' > /entrypoint.sh && chmod +x /entrypoint.sh
+
+# Run the application using entrypoint script
+ENTRYPOINT ["/entrypoint.sh"]
