@@ -51,5 +51,5 @@ ENV STREAMLIT_SERVER_ENABLE_XSRF_PROTECTION=false
 ENV PORT=8501
 EXPOSE $PORT
 
-# Run the application with Railway's PORT
-CMD ["sh", "-c", "streamlit run app.py --server.port=${PORT:-8501} --server.address=0.0.0.0"]
+# Run the application with Railway's PORT - simplified command
+CMD streamlit run app.py --server.port=$PORT --server.address=0.0.0.0 --server.headless=true
