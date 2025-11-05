@@ -1,0 +1,227 @@
+{
+  "component_tests": {
+    "config_loading": true,
+    "model_manager": true,
+    "metadata_store": true,
+    "search_engine": true,
+    "issues": []
+  },
+  "search_tests": {
+    "successful_queries": 15,
+    "failed_queries": 0,
+    "query_results": {
+      "red brick buildings": {
+        "result_count": 5,
+        "accuracy_score": 0.5175314154542557,
+        "top_result": {
+          "path": "images/brick_buildings/modern_brick_facade_04.jpg",
+          "confidence": 0.40995982477846216,
+          "description": "Contemporary building featuring red brick facade"
+        }
+      },
+      "glass and steel structures": {
+        "result_count": 5,
+        "accuracy_score": 0.06729189520309137,
+        "top_result": {
+          "path": "images/mixed_materials/industrial_mixed_complex_13.jpg",
+          "confidence": 0.37610647109271955,
+          "description": "Modern building with modern and small windows"
+        }
+      },
+      "stone facades": {
+        "result_count": 5,
+        "accuracy_score": 0.0,
+        "top_result": {
+          "path": "images/brick_buildings/brown_brick_office_02.jpg",
+          "confidence": 0.39393484269519186,
+          "description": "Brown brick building with contemporary roofline and well-proportioned windows"
+        }
+      },
+      "mixed materials": {
+        "result_count": 5,
+        "accuracy_score": 0.0,
+        "top_result": {
+          "path": "images/brick_buildings/old_brick_factory_08.jpg",
+          "confidence": 0.392711407937,
+          "description": "Contemporary building featuring brown brick facade"
+        }
+      },
+      "flat roof structures": {
+        "result_count": 5,
+        "accuracy_score": 0.04622830503418618,
+        "top_result": {
+          "path": "images/brick_buildings/brown_brick_office_02.jpg",
+          "confidence": 0.3856737947160465,
+          "description": "Brown brick building with contemporary roofline and well-proportioned windows"
+        }
+      },
+      "large windows": {
+        "result_count": 5,
+        "accuracy_score": 0.14735401629211628,
+        "top_result": {
+          "path": "images/mixed_materials/wood_glass_pavilion_05.jpg",
+          "confidence": 0.38893257510750345,
+          "description": "Modern building with clean lines and contemporary roofline"
+        }
+      },
+      "columns and arches": {
+        "result_count": 5,
+        "accuracy_score": 0.06686562595218433,
+        "top_result": {
+          "path": "images/brick_buildings/modern_brick_facade_04.jpg",
+          "confidence": 0.37288560977204505,
+          "description": "Contemporary building featuring red brick facade"
+        }
+      },
+      "curved architecture": {
+        "result_count": 5,
+        "accuracy_score": 0.0,
+        "top_result": {
+          "path": "images/brick_buildings/modern_brick_facade_04.jpg",
+          "confidence": 0.3810121722594629,
+          "description": "Contemporary building featuring red brick facade"
+        }
+      },
+      "modern office buildings": {
+        "result_count": 5,
+        "accuracy_score": 0.04554769673013169,
+        "top_result": {
+          "path": "images/brick_buildings/modern_brick_facade_04.jpg",
+          "confidence": 0.3823209254285925,
+          "description": "Contemporary building featuring red brick facade"
+        }
+      },
+      "traditional residential": {
+        "result_count": 5,
+        "accuracy_score": 0.0,
+        "top_result": {
+          "path": "images/brick_buildings/old_brick_factory_08.jpg",
+          "confidence": 0.37925850538891326,
+          "description": "Contemporary building featuring brown brick facade"
+        }
+      },
+      "industrial architecture": {
+        "result_count": 5,
+        "accuracy_score": 0.0,
+        "top_result": {
+          "path": "images/brick_buildings/modern_brick_facade_04.jpg",
+          "confidence": 0.38594452213502933,
+          "description": "Contemporary building featuring red brick facade"
+        }
+      },
+      "contemporary design": {
+        "result_count": 5,
+        "accuracy_score": 0.09249512877124075,
+        "top_result": {
+          "path": "images/brick_buildings/red_brick_school_06.jpg",
+          "confidence": 0.38657968330050135,
+          "description": "Building featuring red brick facade and terraces"
+        }
+      },
+      "red brick residential buildings with large windows": {
+        "result_count": 5,
+        "accuracy_score": 0.5609525000864488,
+        "top_result": {
+          "path": "images/brick_buildings/modern_brick_facade_04.jpg",
+          "confidence": 0.4094160576430603,
+          "description": "Contemporary building featuring red brick facade"
+        }
+      },
+      "modern glass office towers": {
+        "result_count": 5,
+        "accuracy_score": 0.08839632102464287,
+        "top_result": {
+          "path": "images/mixed_materials/mixed_material_mall_11.jpg",
+          "confidence": 0.3701611425237666,
+          "description": "Modern building with clean lines and contemporary roofline"
+        }
+      },
+      "stone buildings with classical columns": {
+        "result_count": 5,
+        "accuracy_score": 0.0665715179284873,
+        "top_result": {
+          "path": "images/brick_buildings/brown_brick_office_02.jpg",
+          "confidence": 0.3718381345052535,
+          "description": "Brown brick building with contemporary roofline and well-proportioned windows"
+        }
+      }
+    },
+    "accuracy_scores": [
+      0.5175314154542557,
+      0.06729189520309137,
+      0.0,
+      0.0,
+      0.04622830503418618,
+      0.14735401629211628,
+      0.06686562595218433,
+      0.0,
+      0.04554769673013169,
+      0.0,
+      0.0,
+      0.09249512877124075,
+      0.5609525000864488,
+      0.08839632102464287,
+      0.0665715179284873
+    ],
+    "issues": [],
+    "overall_accuracy": 0.11328229483178569
+  },
+  "performance_tests": {
+    "response_times": [
+      0.02263927459716797,
+      0.020298004150390625,
+      0.021711111068725586,
+      0.022164106369018555,
+      0.022310972213745117
+    ],
+    "avg_response_time": 0.02182469367980957,
+    "max_response_time": 0.02263927459716797,
+    "performance_passed": true,
+    "issues": []
+  },
+  "edge_case_tests": {
+    "edge_cases_tested": 9,
+    "edge_cases_passed": 9,
+    "test_details": {
+      "empty_query": {
+        "status": "PASS",
+        "reason": "Correctly raised ValueError"
+      },
+      "whitespace_query": {
+        "status": "PASS",
+        "reason": "Correctly raised ValueError"
+      },
+      "too_short_query": {
+        "status": "PASS",
+        "reason": "Correctly raised ValueError"
+      },
+      "too_long_query": {
+        "status": "PASS",
+        "reason": "Returned 5 results gracefully"
+      },
+      "nonsensical_query": {
+        "status": "PASS",
+        "reason": "Returned 5 results gracefully"
+      },
+      "numeric_query": {
+        "status": "PASS",
+        "reason": "Returned 5 results gracefully"
+      },
+      "special_characters": {
+        "status": "PASS",
+        "reason": "Returned 5 results gracefully"
+      },
+      "unlikely_match": {
+        "status": "PASS",
+        "reason": "Returned 5 results gracefully"
+      },
+      "impossible_match": {
+        "status": "PASS",
+        "reason": "Returned 5 results gracefully"
+      }
+    },
+    "issues": []
+  },
+  "overall_status": "FAIL",
+  "total_test_time": 3.369562864303589
+}

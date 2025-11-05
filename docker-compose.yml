@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  ai-architectural-search:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8501:8501"
+    environment:
+      - ENVIRONMENT=development
+      - DEBUG_MODE=true
+      - LOG_LEVEL=INFO
+      - MEMORY_OPTIMIZATION=false
+      - CPU_ONLY_MODE=false
+      - ENABLE_MODEL_CACHING=true
+    volumes:
+      # Mount images directory for development
+      - ./images:/app/images:ro
+      - ./image_metadata.json:/app/image_metadata.json:ro
+      # Mount logs directory for debugging
+      - ./logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # Optional: Add a reverse proxy for production-like setup
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - ai-architectural-search
+    profiles:
+      - production

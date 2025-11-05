@@ -1,0 +1,203 @@
+{
+  "demo_ready": true,
+  "overall_score": 92.00000000000001,
+  "query_assessment": {
+    "success_rate": 0.8,
+    "avg_performance_time": 0.023283672332763673,
+    "total_queries": 5,
+    "successful_queries": 4
+  },
+  "performance_assessment": {
+    "consistency_good": true,
+    "avg_session_time": 0.035328944524129234,
+    "time_variance": 0.01877903938293457
+  },
+  "interface_assessment": {
+    "completeness": 1.0,
+    "components_present": 6,
+    "components_total": 6
+  },
+  "recommendations": [
+    "\u2705 System is ready for client demonstration",
+    "\ud83c\udfaf Focus on high-priority queries during demo",
+    "\ud83d\udccb Prepare backup queries in case of issues",
+    "\ud83d\udea8 Fix high-priority queries: stone buildings"
+  ],
+  "detailed_results": {
+    "queries": {
+      "queries_tested": 5,
+      "queries_successful": 4,
+      "performance_times": [
+        0.025238037109375,
+        0.022555828094482422,
+        0.023253202438354492,
+        0.023023128509521484,
+        0.02234816551208496
+      ],
+      "query_details": [
+        {
+          "query": "red brick buildings",
+          "priority": "high",
+          "execution_time": 0.025238037109375,
+          "result_count": 5,
+          "relevance_score": 0.5,
+          "successful": true,
+          "top_results": [
+            {
+              "rank": 1,
+              "image": "modern_brick_facade_04.jpg",
+              "confidence": 0.40995982477846216,
+              "description": "Contemporary building featuring red brick facade"
+            },
+            {
+              "rank": 2,
+              "image": "red_brick_school_06.jpg",
+              "confidence": 0.40711883766661594,
+              "description": "Building featuring red brick facade and terraces"
+            },
+            {
+              "rank": 3,
+              "image": "brick_library_09.jpg",
+              "confidence": 0.40544814958728725,
+              "description": "Red brick building with stucco and contemporary roofline"
+            }
+          ]
+        },
+        {
+          "query": "glass facades",
+          "priority": "high",
+          "execution_time": 0.022555828094482422,
+          "result_count": 5,
+          "relevance_score": 0.3,
+          "successful": true,
+          "top_results": [
+            {
+              "rank": 1,
+              "image": "modern_brick_facade_04.jpg",
+              "confidence": 0.38122269568751954,
+              "description": "Contemporary building featuring red brick facade"
+            },
+            {
+              "rank": 2,
+              "image": "steel_frame_building_03.jpg",
+              "confidence": 0.38106698462456734,
+              "description": "Modern building with contemporary roofline and rectangular windows"
+            },
+            {
+              "rank": 3,
+              "image": "industrial_mixed_complex_13.jpg",
+              "confidence": 0.37848779538193633,
+              "description": "Modern building with modern and small windows"
+            }
+          ]
+        },
+        {
+          "query": "stone buildings",
+          "priority": "high",
+          "execution_time": 0.023253202438354492,
+          "result_count": 5,
+          "relevance_score": 0.0,
+          "successful": false,
+          "top_results": [
+            {
+              "rank": 1,
+              "image": "brown_brick_office_02.jpg",
+              "confidence": 0.3784262571455322,
+              "description": "Brown brick building with contemporary roofline and well-proportioned windows"
+            },
+            {
+              "rank": 2,
+              "image": "historic_brick_church_03.jpg",
+              "confidence": 0.37718381310747895,
+              "description": "Brown brick building with clean lines and contemporary roofline"
+            },
+            {
+              "rank": 3,
+              "image": "old_brick_factory_08.jpg",
+              "confidence": 0.3757754191074325,
+              "description": "Contemporary building featuring brown brick facade"
+            }
+          ]
+        },
+        {
+          "query": "modern architecture",
+          "priority": "normal",
+          "execution_time": 0.023023128509521484,
+          "result_count": 5,
+          "relevance_score": 0.2,
+          "successful": true,
+          "top_results": [
+            {
+              "rank": 1,
+              "image": "red_brick_school_06.jpg",
+              "confidence": 0.37953816259589607,
+              "description": "Building featuring red brick facade and terraces"
+            },
+            {
+              "rank": 2,
+              "image": "modern_brick_facade_04.jpg",
+              "confidence": 0.379368037524162,
+              "description": "Contemporary building featuring red brick facade"
+            },
+            {
+              "rank": 3,
+              "image": "brown_brick_office_02.jpg",
+              "confidence": 0.37723985953694616,
+              "description": "Brown brick building with contemporary roofline and well-proportioned windows"
+            }
+          ]
+        },
+        {
+          "query": "large windows",
+          "priority": "normal",
+          "execution_time": 0.02234816551208496,
+          "result_count": 5,
+          "relevance_score": 0.2,
+          "successful": true,
+          "top_results": [
+            {
+              "rank": 1,
+              "image": "wood_glass_pavilion_05.jpg",
+              "confidence": 0.38893257510750345,
+              "description": "Modern building with clean lines and contemporary roofline"
+            },
+            {
+              "rank": 2,
+              "image": "industrial_mixed_complex_13.jpg",
+              "confidence": 0.3880854383494672,
+              "description": "Modern building with modern and small windows"
+            },
+            {
+              "rank": 3,
+              "image": "sandstone_castle_08.jpg",
+              "confidence": 0.38797379162979073,
+              "description": "Contemporary building featuring brown brick facade"
+            }
+          ]
+        }
+      ],
+      "demo_readiness": false,
+      "issues": [
+        "High priority query 'stone buildings' not performing well"
+      ]
+    },
+    "performance": {
+      "sessions": 3,
+      "session_times": [
+        0.02318286895751953,
+        0.04084205627441406,
+        0.0419619083404541
+      ],
+      "consistency_good": true,
+      "issues": [],
+      "time_variance": 0.01877903938293457,
+      "avg_time": 0.035328944524129234
+    },
+    "interface": {
+      "components_checked": 6,
+      "components_present": 6,
+      "demo_ready": true,
+      "issues": []
+    }
+  }
+}

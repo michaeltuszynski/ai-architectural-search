@@ -1,0 +1,104 @@
+{
+  "total_images": 45,
+  "categories": {
+    "brick_buildings": {
+      "count": 10,
+      "target": 10,
+      "description": "Buildings with prominent brick construction",
+      "keywords": [
+        "red brick",
+        "brown brick",
+        "brick facade",
+        "brick wall"
+      ],
+      "files": [
+        "colonial_brick_house_10.jpg",
+        "red_brick_house_01.jpg",
+        "brick_warehouse_05.jpg",
+        "brown_brick_office_02.jpg",
+        "brick_library_09.jpg",
+        "modern_brick_facade_04.jpg",
+        "historic_brick_church_03.jpg",
+        "brick_apartment_07.jpg",
+        "red_brick_school_06.jpg",
+        "old_brick_factory_08.jpg"
+      ]
+    },
+    "glass_steel": {
+      "count": 10,
+      "target": 10,
+      "description": "Modern buildings with glass and steel construction",
+      "keywords": [
+        "glass facade",
+        "steel frame",
+        "curtain wall",
+        "modern"
+      ],
+      "files": [
+        "modern_glass_museum_06.jpg",
+        "skyscraper_glass_facade_05.jpg",
+        "contemporary_glass_house_04.jpg",
+        "glass_residential_tower_09.jpg",
+        "glass_curtain_wall_02.jpg",
+        "steel_glass_mall_07.jpg",
+        "modern_office_tower_01.jpg",
+        "modern_glass_library_10.jpg",
+        "corporate_headquarters_08.jpg",
+        "steel_frame_building_03.jpg"
+      ]
+    },
+    "stone_facades": {
+      "count": 10,
+      "target": 10,
+      "description": "Buildings with natural stone exteriors",
+      "keywords": [
+        "limestone",
+        "granite",
+        "sandstone",
+        "stone wall"
+      ],
+      "files": [
+        "limestone_hotel_10.jpg",
+        "marble_government_04.jpg",
+        "granite_bank_building_02.jpg",
+        "sandstone_castle_08.jpg",
+        "limestone_courthouse_01.jpg",
+        "stone_bridge_09.jpg",
+        "granite_memorial_07.jpg",
+        "limestone_mansion_06.jpg",
+        "sandstone_university_03.jpg",
+        "stone_cathedral_05.jpg"
+      ]
+    },
+    "mixed_materials": {
+      "count": 15,
+      "target": 15,
+      "description": "Buildings combining multiple materials",
+      "keywords": [
+        "mixed materials",
+        "concrete and glass",
+        "wood and steel"
+      ],
+      "files": [
+        "glass_stone_church_10.jpg",
+        "wood_glass_pavilion_05.jpg",
+        "modern_mixed_apartment_14.jpg",
+        "stone_glass_hotel_07.jpg",
+        "concrete_wood_school_09.jpg",
+        "concrete_glass_museum_01.jpg",
+        "brick_glass_office_03.jpg",
+        "eco_mixed_building_15.jpg",
+        "industrial_mixed_complex_13.jpg",
+        "brick_steel_loft_08.jpg",
+        "contemporary_mixed_house_12.jpg",
+        "metal_concrete_factory_06.jpg",
+        "concrete_steel_stadium_04.jpg",
+        "mixed_material_mall_11.jpg",
+        "wood_steel_residence_02.jpg"
+      ]
+    }
+  },
+  "naming_convention": "category_description_index.jpg",
+  "format": "JPEG",
+  "status": "ready_for_processing"
+}

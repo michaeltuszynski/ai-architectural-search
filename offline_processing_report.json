@@ -1,0 +1,281 @@
+{
+  "timestamp": "2025-11-05T10:14:16.188766",
+  "processing": {
+    "success": true,
+    "processed_count": 45,
+    "processing_time_seconds": 48.537534,
+    "images_per_second": 0.9271175581355245,
+    "initial_status": {
+      "storage": {
+        "total_images": 0,
+        "metadata_file": "image_metadata.json",
+        "file_exists": false,
+        "cache_loaded": false
+      },
+      "processor": {
+        "model_info": {
+          "status": "loaded",
+          "model_name": "ViT-B/32",
+          "device": "cpu",
+          "parameter_count": 151277313,
+          "batch_size": 10
+        },
+        "supported_formats": [
+          ".tiff",
+          ".jpg",
+          ".bmp",
+          ".jpeg",
+          ".png",
+          ".webp"
+        ],
+        "batch_size": 10,
+        "feature_categories": [
+          "materials",
+          "roof_types",
+          "window_styles",
+          "architectural_elements",
+          "building_types"
+        ],
+        "total_features": 52
+      },
+      "config": {
+        "image_directory": "images/",
+        "metadata_file": "image_metadata.json",
+        "batch_size": 10
+      }
+    },
+    "final_status": {
+      "storage": {
+        "total_images": 45,
+        "metadata_file": "image_metadata.json",
+        "file_exists": true,
+        "cache_loaded": true,
+        "file_size_bytes": 715351,
+        "file_size_mb": 0.68,
+        "last_modified": "2025-11-05T10:14:16.167715",
+        "embedding_dimension": 512,
+        "total_embeddings": 45,
+        "avg_features_per_image": 2.0
+      },
+      "processor": {
+        "model_info": {
+          "status": "loaded",
+          "model_name": "ViT-B/32",
+          "device": "cpu",
+          "parameter_count": 151277313,
+          "batch_size": 10
+        },
+        "supported_formats": [
+          ".tiff",
+          ".jpg",
+          ".bmp",
+          ".jpeg",
+          ".png",
+          ".webp"
+        ],
+        "batch_size": 10,
+        "feature_categories": [
+          "materials",
+          "roof_types",
+          "window_styles",
+          "architectural_elements",
+          "building_types"
+        ],
+        "total_features": 52
+      },
+      "config": {
+        "image_directory": "images/",
+        "metadata_file": "image_metadata.json",
+        "batch_size": 10
+      }
+    },
+    "validation": {
+      "directory_exists": true,
+      "categories": {
+        "brick_buildings": {
+          "exists": true,
+          "image_count": 10,
+          "files": [
+            "brick_apartment_07.jpg",
+            "brick_library_09.jpg",
+            "brick_warehouse_05.jpg",
+            "brown_brick_office_02.jpg",
+            "colonial_brick_house_10.jpg",
+            "historic_brick_church_03.jpg",
+            "modern_brick_facade_04.jpg",
+            "old_brick_factory_08.jpg",
+            "red_brick_house_01.jpg",
+            "red_brick_school_06.jpg"
+          ]
+        },
+        "glass_steel": {
+          "exists": true,
+          "image_count": 10,
+          "files": [
+            "contemporary_glass_house_04.jpg",
+            "corporate_headquarters_08.jpg",
+            "glass_curtain_wall_02.jpg",
+            "glass_residential_tower_09.jpg",
+            "modern_glass_library_10.jpg",
+            "modern_glass_museum_06.jpg",
+            "modern_office_tower_01.jpg",
+            "skyscraper_glass_facade_05.jpg",
+            "steel_frame_building_03.jpg",
+            "steel_glass_mall_07.jpg"
+          ]
+        },
+        "stone_facades": {
+          "exists": true,
+          "image_count": 10,
+          "files": [
+            "granite_bank_building_02.jpg",
+            "granite_memorial_07.jpg",
+            "limestone_courthouse_01.jpg",
+            "limestone_hotel_10.jpg",
+            "limestone_mansion_06.jpg",
+            "marble_government_04.jpg",
+            "sandstone_castle_08.jpg",
+            "sandstone_university_03.jpg",
+            "stone_bridge_09.jpg",
+            "stone_cathedral_05.jpg"
+          ]
+        },
+        "mixed_materials": {
+          "exists": true,
+          "image_count": 15,
+          "files": [
+            "brick_glass_office_03.jpg",
+            "brick_steel_loft_08.jpg",
+            "concrete_glass_museum_01.jpg",
+            "concrete_steel_stadium_04.jpg",
+            "concrete_wood_school_09.jpg",
+            "contemporary_mixed_house_12.jpg",
+            "eco_mixed_building_15.jpg",
+            "glass_stone_church_10.jpg",
+            "industrial_mixed_complex_13.jpg",
+            "metal_concrete_factory_06.jpg",
+            "mixed_material_mall_11.jpg",
+            "modern_mixed_apartment_14.jpg",
+            "stone_glass_hotel_07.jpg",
+            "wood_glass_pavilion_05.jpg",
+            "wood_steel_residence_02.jpg"
+          ]
+        }
+      },
+      "total_images": 45,
+      "supported_formats": 45,
+      "validation_passed": true
+    }
+  },
+  "validation": {
+    "total_metadata_entries": 45,
+    "storage_stats": {
+      "total_images": 45,
+      "metadata_file": "image_metadata.json",
+      "file_exists": true,
+      "cache_loaded": true,
+      "file_size_bytes": 715351,
+      "file_size_mb": 0.68,
+      "last_modified": "2025-11-05T10:14:16.167715",
+      "embedding_dimension": 512,
+      "total_embeddings": 45,
+      "avg_features_per_image": 2.0
+    },
+    "sample_metadata": {
+      "images/brick_buildings/brick_apartment_07.jpg": {
+        "description": "Modern building with brown brick and well-proportioned windows",
+        "features": [
+          "brown brick",
+          "brick facade",
+          "red brick",
+          "white brick",
+          "concrete"
+        ],
+        "embedding_size": 512,
+        "file_size": 129049,
+        "dimensions": [
+          800,
+          600
+        ]
+      },
+      "images/brick_buildings/brick_library_09.jpg": {
+        "description": "Red brick building with stucco and contemporary roofline",
+        "features": [
+          "red brick",
+          "brick facade",
+          "brown brick",
+          "white brick",
+          "stucco"
+        ],
+        "embedding_size": 512,
+        "file_size": 123688,
+        "dimensions": [
+          800,
+          600
+        ]
+      },
+      "images/brick_buildings/brick_warehouse_05.jpg": {
+        "description": "Brown brick building with contemporary roofline and well-proportioned windows",
+        "features": [
+          "brown brick",
+          "red brick",
+          "brick facade",
+          "white brick",
+          "concrete"
+        ],
+        "embedding_size": 512,
+        "file_size": 131926,
+        "dimensions": [
+          800,
+          600
+        ]
+      },
+      "images/brick_buildings/brown_brick_office_02.jpg": {
+        "description": "Brown brick building with contemporary roofline and well-proportioned windows",
+        "features": [
+          "brown brick",
+          "brick facade",
+          "white brick",
+          "red brick",
+          "concrete"
+        ],
+        "embedding_size": 512,
+        "file_size": 127635,
+        "dimensions": [
+          800,
+          600
+        ]
+      },
+      "images/brick_buildings/colonial_brick_house_10.jpg": {
+        "description": "Brick facade building with decorative elements and contemporary roofline",
+        "features": [
+          "brick facade",
+          "white brick",
+          "brown brick",
+          "red brick",
+          "decorative elements"
+        ],
+        "embedding_size": 512,
+        "file_size": 103638,
+        "dimensions": [
+          800,
+          600
+        ]
+      }
+    },
+    "validation_passed": true,
+    "issues": [],
+    "completeness": {
+      "embeddings": 100.0,
+      "descriptions": 100.0,
+      "features": 100.0
+    }
+  },
+  "summary": {
+    "overall_success": true,
+    "total_images_processed": 45,
+    "processing_time": 48.537534,
+    "metadata_entries": 45,
+    "ready_for_search": true
+  }
+}

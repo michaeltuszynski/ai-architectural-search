@@ -1,0 +1,292 @@
+name: Deploy AI Architectural Search
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: 'Deployment platform'
+        required: true
+        default: 'huggingface'
+        type: choice
+        options:
+        - huggingface
+        - railway
+        - render
+        - all
+
+env:
+  PYTHON_VERSION: '3.9'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+    
+    - name: Cache pip dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Run health check
+      run: |
+        python health_check.py
+      continue-on-error: true
+    
+    - name: Run tests
+      run: |
+        if [ -d "tests" ]; then
+          python -m pytest tests/ -v --tb=short
+        else
+          echo "No tests directory found, skipping tests"
+        fi
+      continue-on-error: true
+    
+    - name: Test Docker build
+      run: |
+        docker build -t ai-architectural-search-test .
+        docker run --rm ai-architectural-search-test python -c "import torch; import clip; print('Dependencies OK')"
+        docker rmi ai-architectural-search-test
+    
+    - name: Validate deployment files
+      run: |
+        # Check if required deployment files exist
+        test -f Dockerfile
+        test -f app.py
+        test -f requirements.txt
+        test -f config.py
+        test -d src/
+        test -d images/
+        test -f image_metadata.json
+        echo "All required files present"
+
+  backup:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Full history for backup
+    
+    - name: Create deployment backup
+      run: |
+        mkdir -p backups
+        backup_name="github_deploy_$(date +%Y%m%d_%H%M%S)"
+        mkdir -p "backups/$backup_name"
+        
+        # Backup key files
+        cp -r src/ "backups/$backup_name/" || true
+        cp config.py requirements.txt app.py Dockerfile "backups/$backup_name/" || true
+        
+        # Create backup manifest
+        cat > "backups/$backup_name/backup_manifest.json" << EOF
+        {
+          "backup_name": "$backup_name",
+          "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+          "git_commit": "${{ github.sha }}",
+          "git_branch": "${{ github.ref_name }}",
+          "workflow_run": "${{ github.run_id }}"
+        }
+        EOF
+        
+        echo "Backup created: $backup_name"
+    
+    - name: Upload backup artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: deployment-backup
+        path: backups/
+        retention-days: 30
+
+  deploy-huggingface:
+    needs: [test, backup]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && (github.event.inputs.platform == 'huggingface' || github.event.inputs.platform == 'all' || github.event.inputs.platform == '')
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+    
+    - name: Install Hugging Face CLI
+      run: |
+        pip install huggingface_hub[cli]
+    
+    - name: Deploy to Hugging Face Spaces
+      env:
+        HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        HF_USERNAME: ${{ secrets.HF_USERNAME }}
+      run: |
+        if [ -z "$HF_TOKEN" ]; then
+          echo "❌ HF_TOKEN secret not set"
+          exit 1
+        fi
+        
+        if [ -z "$HF_USERNAME" ]; then
+          echo "❌ HF_USERNAME secret not set"
+          exit 1
+        fi
+        
+        # Run deployment script
+        export HF_USERNAME="$HF_USERNAME"
+        bash scripts/deploy_huggingface.sh
+    
+    - name: Monitor Hugging Face deployment
+      env:
+        HF_USERNAME: ${{ secrets.HF_USERNAME }}
+      run: |
+        if [ -n "$HF_USERNAME" ]; then
+          export HF_SPACE_NAME="ai-architectural-search"
+          sleep 60  # Wait for deployment to start
+          bash scripts/monitor_deployment.sh || true
+        fi
+
+  deploy-railway:
+    needs: [test, backup]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && (github.event.inputs.platform == 'railway' || github.event.inputs.platform == 'all')
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Deploy to Railway
+      env:
+        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+      run: |
+        if [ -z "$RAILWAY_TOKEN" ]; then
+          echo "❌ RAILWAY_TOKEN secret not set"
+          exit 1
+        fi
+        
+        # Run deployment script
+        bash scripts/deploy_railway.sh
+    
+    - name: Monitor Railway deployment
+      run: |
+        sleep 60  # Wait for deployment to start
+        bash scripts/monitor_deployment.sh || true
+
+  deploy-render:
+    needs: [test, backup]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && (github.event.inputs.platform == 'render' || github.event.inputs.platform == 'all')
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Deploy to Render
+      env:
+        RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        GITHUB_REPO: ${{ github.repository }}
+      run: |
+        if [ -z "$RENDER_API_KEY" ]; then
+          echo "❌ RENDER_API_KEY secret not set"
+          exit 1
+        fi
+        
+        # Run deployment script
+        bash scripts/deploy_render.sh
+    
+    - name: Monitor Render deployment
+      run: |
+        sleep 60  # Wait for deployment to start
+        bash scripts/monitor_deployment.sh || true
+
+  post-deploy:
+    needs: [deploy-huggingface, deploy-railway, deploy-render]
+    runs-on: ubuntu-latest
+    if: always() && github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Deployment Summary
+      run: |
+        echo "## Deployment Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        # Check job results
+        if [ "${{ needs.deploy-huggingface.result }}" = "success" ]; then
+          echo "✅ Hugging Face Spaces: Deployed successfully" >> $GITHUB_STEP_SUMMARY
+        elif [ "${{ needs.deploy-huggingface.result }}" = "failure" ]; then
+          echo "❌ Hugging Face Spaces: Deployment failed" >> $GITHUB_STEP_SUMMARY
+        elif [ "${{ needs.deploy-huggingface.result }}" = "skipped" ]; then
+          echo "⏭️ Hugging Face Spaces: Skipped" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        if [ "${{ needs.deploy-railway.result }}" = "success" ]; then
+          echo "✅ Railway: Deployed successfully" >> $GITHUB_STEP_SUMMARY
+        elif [ "${{ needs.deploy-railway.result }}" = "failure" ]; then
+          echo "❌ Railway: Deployment failed" >> $GITHUB_STEP_SUMMARY
+        elif [ "${{ needs.deploy-railway.result }}" = "skipped" ]; then
+          echo "⏭️ Railway: Skipped" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        if [ "${{ needs.deploy-render.result }}" = "success" ]; then
+          echo "✅ Render: Deployed successfully" >> $GITHUB_STEP_SUMMARY
+        elif [ "${{ needs.deploy-render.result }}" = "failure" ]; then
+          echo "❌ Render: Deployment failed" >> $GITHUB_STEP_SUMMARY
+        elif [ "${{ needs.deploy-render.result }}" = "skipped" ]; then
+          echo "⏭️ Render: Skipped" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Branch:** ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Workflow:** ${{ github.run_id }}" >> $GITHUB_STEP_SUMMARY
+    
+    - name: Create deployment issue on failure
+      if: failure()
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: `Deployment failed - ${context.sha.substring(0, 7)}`,
+            body: `
+            ## Deployment Failure Report
+            
+            **Commit:** ${context.sha}
+            **Branch:** ${context.ref}
+            **Workflow Run:** ${context.runId}
+            **Timestamp:** ${new Date().toISOString()}
+            
+            One or more deployments failed. Please check the workflow logs for details.
+            
+            ### Failed Jobs:
+            - Hugging Face: ${{ needs.deploy-huggingface.result }}
+            - Railway: ${{ needs.deploy-railway.result }}
+            - Render: ${{ needs.deploy-render.result }}
+            
+            ### Next Steps:
+            1. Check workflow logs for error details
+            2. Verify deployment secrets are configured
+            3. Test deployment locally using \`scripts/deploy.sh\`
+            4. Consider rolling back using backup artifacts
+            `,
+            labels: ['deployment', 'bug']
+          })

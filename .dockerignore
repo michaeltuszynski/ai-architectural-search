@@ -1,0 +1,75 @@
+# Version control
+.git
+.gitignore
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env
+pip-log.txt
+pip-delete-this-directory.txt
+.tox
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git
+.mypy_cache
+.pytest_cache
+.hypothesis
+
+# Virtual environments
+venv/
+.venv/
+ENV/
+env/
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Project specific
+logs/
+*.log
+.pytest_cache/
+test_*.py
+tests/
+*_test.py
+*_tests.py
+
+# Documentation
+README.md
+*.md
+docs/
+
+# Development files
+docker-compose.yml
+Dockerfile.dev
+.env.example
+
+# Large files that should be downloaded at runtime
+# (Keep images and metadata as they're needed)
+
+# Temporary files
+tmp/
+temp/
+*.tmp
