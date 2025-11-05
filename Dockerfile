@@ -47,9 +47,8 @@ ENV STREAMLIT_BROWSER_GATHER_USAGE_STATS=false
 ENV STREAMLIT_SERVER_ENABLE_CORS=false
 ENV STREAMLIT_SERVER_ENABLE_XSRF_PROTECTION=false
 
-# Default port (Railway will override with PORT env var)
-ENV PORT=8501
-EXPOSE $PORT
+# Create startup script to handle PORT properly
+RUN echo '#!/bin/bash\necho "Starting with PORT: $PORT"\nstreamlit run app.py --server.port=${PORT:-8501} --server.address=0.0.0.0 --server.headless=true' > /start.sh && chmod +x /start.sh
 
-# Run the application with proper PORT variable expansion
-CMD ["sh", "-c", "streamlit run app.py --server.port=${PORT} --server.address=0.0.0.0 --server.headless=true"]
+# Run the application using the startup script
+CMD ["/start.sh"]
