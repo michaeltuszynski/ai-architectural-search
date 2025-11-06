@@ -40,10 +40,12 @@ COPY . .
 RUN mkdir -p images logs
 
 # Set environment variables for production
-ENV PYTHONPATH=/app
+ENV PYTHONPATH=/app:/app/src
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
-# Create entrypoint script that handles Railway's PORT variable
-RUN printf '#!/bin/sh\nexec streamlit run app.py --server.port=${PORT:-8501} --server.address=0.0.0.0\n' > /entrypoint.sh && chmod +x /entrypoint.sh
+# Create entrypoint script that handles Railway's PORT variable and sets PYTHONPATH
+RUN printf '#!/bin/sh\nexport PYTHONPATH=/app:/app/src\nexec streamlit run app.py --server.port=${PORT:-8501} --server.address=0.0.0.0\n' > /entrypoint.sh && chmod +x /entrypoint.sh
 
 # Run the application using entrypoint script
 ENTRYPOINT ["/entrypoint.sh"]
