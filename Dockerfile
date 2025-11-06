@@ -43,12 +43,9 @@ RUN mkdir -p images logs
 RUN touch src/__init__.py src/models/__init__.py src/processors/__init__.py src/web/__init__.py src/storage/__init__.py
 
 # Set environment variables for production
-ENV PYTHONPATH=/app:/app/src
+ENV PYTHONPATH=/app
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-# Create entrypoint script that handles Railway's PORT variable and sets PYTHONPATH
-RUN printf '#!/bin/sh\nexport PYTHONPATH=/app:/app/src\nexec streamlit run app.py --server.port=${PORT:-8501} --server.address=0.0.0.0\n' > /entrypoint.sh && chmod +x /entrypoint.sh
-
-# Run the application using entrypoint script
-ENTRYPOINT ["/entrypoint.sh"]
+# Run the application using Python to properly handle package imports
+CMD ["python", "run_app.py"]
