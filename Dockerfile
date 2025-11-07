@@ -39,8 +39,15 @@ COPY . .
 # Create necessary directories
 RUN mkdir -p images logs
 
+# Ensure src is a proper Python package
+RUN touch src/__init__.py && \
+    touch src/models/__init__.py && \
+    touch src/processors/__init__.py && \
+    touch src/storage/__init__.py && \
+    touch src/web/__init__.py
+
 # Set environment variables for production
-ENV PYTHONPATH=/app
+ENV PYTHONPATH=/app:/app/src
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
