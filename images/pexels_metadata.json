@@ -1,0 +1,576 @@
+{
+  "source": "Pexels",
+  "license": "Pexels License (free to use)",
+  "attribution_required": false,
+  "categories": {
+    "brick_buildings": [
+      {
+        "filename": "brick_buildings_01.jpg",
+        "category": "brick_buildings",
+        "pexels_id": 912124,
+        "photographer": "Tim Mossholder",
+        "photographer_url": "https://www.pexels.com/@timmossholder",
+        "photo_url": "https://www.pexels.com/photo/brown-wall-cladding-912124/",
+        "description": "High-quality image of a classic red brick wall, perfect for design or architectural projects.",
+        "width": 7926,
+        "height": 5284
+      },
+      {
+        "filename": "brick_buildings_02.jpg",
+        "category": "brick_buildings",
+        "pexels_id": 1115150,
+        "photographer": "Brett Sayles",
+        "photographer_url": "https://www.pexels.com/@brett-sayles",
+        "photo_url": "https://www.pexels.com/photo/brown-concrete-building-1115150/",
+        "description": "Detailed exterior view of a vintage urban brick building with green-framed windows creating a retro city atmosphere.",
+        "width": 5568,
+        "height": 3712
+      },
+      {
+        "filename": "brick_buildings_03.jpg",
+        "category": "brick_buildings",
+        "pexels_id": 439382,
+        "photographer": "SevenStorm JUHASZIMRUS",
+        "photographer_url": "https://www.pexels.com/@sevenstormphotography",
+        "photo_url": "https://www.pexels.com/photo/gray-concrete-structure-439382/",
+        "description": "Low angle view of a modern brick building facade showcasing glass balconies and architectural design.",
+        "width": 5184,
+        "height": 3888
+      },
+      {
+        "filename": "brick_buildings_04.jpg",
+        "category": "brick_buildings",
+        "pexels_id": 34545801,
+        "photographer": "Wolfgang Weiser",
+        "photographer_url": "https://www.pexels.com/@wolfgang-weiser-467045605",
+        "photo_url": "https://www.pexels.com/photo/historic-white-building-in-wittenburg-germany-34545801/",
+        "description": "A stunning historic white building in Wittenburg, Germany showcasing unique architecture.",
+        "width": 6512,
+        "height": 3663
+      },
+      {
+        "filename": "brick_buildings_05.jpg",
+        "category": "brick_buildings",
+        "pexels_id": 34625396,
+        "photographer": "Gerry Irons",
+        "photographer_url": "https://www.pexels.com/@gerry-irons-133114096",
+        "photo_url": "https://www.pexels.com/photo/historic-clock-tower-in-coastal-landscape-34625396/",
+        "description": "",
+        "width": 4608,
+        "height": 3456
+      },
+      {
+        "filename": "brick_buildings_06.jpg",
+        "category": "brick_buildings",
+        "pexels_id": 34571949,
+        "photographer": "Amandeep Bassi",
+        "photographer_url": "https://www.pexels.com/@amandeep-bassi-16612982",
+        "photo_url": "https://www.pexels.com/photo/majestic-empress-hotel-in-victoria-bc-34571949/",
+        "description": "",
+        "width": 3752,
+        "height": 2814
+      },
+      {
+        "filename": "brick_buildings_07.jpg",
+        "category": "brick_buildings",
+        "pexels_id": 34583792,
+        "photographer": "Robin Heidrich",
+        "photographer_url": "https://www.pexels.com/@robimsel",
+        "photo_url": "https://www.pexels.com/photo/butler-s-wharf-building-along-the-thames-in-london-34583792/",
+        "description": "",
+        "width": 5209,
+        "height": 3473
+      },
+      {
+        "filename": "brick_buildings_08.jpg",
+        "category": "brick_buildings",
+        "pexels_id": 34550177,
+        "photographer": "Nadiia",
+        "photographer_url": "https://www.pexels.com/@nadiia-3130737",
+        "photo_url": "https://www.pexels.com/photo/majestic-ksiaz-castle-amidst-lush-greenery-34550177/",
+        "description": "A breathtaking view of Ksi\u0105\u017c Castle surrounded by vibrant green forests under a blue sky.",
+        "width": 6798,
+        "height": 4534
+      },
+      {
+        "filename": "brick_buildings_09.jpg",
+        "category": "brick_buildings",
+        "pexels_id": 2129947,
+        "photographer": "Lisa from Pexels",
+        "photographer_url": "https://www.pexels.com/@fotios-photos",
+        "photo_url": "https://www.pexels.com/photo/brown-and-gray-building-under-blue-sky-2129947/",
+        "description": "Historic cinema facade displaying movie posters of Captain Marvel in Chester, UK.",
+        "width": 4592,
+        "height": 3064
+      },
+      {
+        "filename": "brick_buildings_10.jpg",
+        "category": "brick_buildings",
+        "pexels_id": 33274537,
+        "photographer": "Optical Chemist",
+        "photographer_url": "https://www.pexels.com/@optical-chemist-340351297",
+        "photo_url": "https://www.pexels.com/photo/historic-brick-architecture-in-washington-dc-33274537/",
+        "description": "Striking red brick building showcasing historic architecture in Washington, DC under cloudy skies.",
+        "width": 5475,
+        "height": 3775
+      },
+      {
+        "filename": "brick_buildings_11.jpg",
+        "category": "brick_buildings",
+        "pexels_id": 31406334,
+        "photographer": "Bingqian Li",
+        "photographer_url": "https://www.pexels.com/@bingqian-li-230971044",
+        "photo_url": "https://www.pexels.com/photo/modern-suburban-house-with-red-brick-facade-31406334/",
+        "description": "A contemporary suburban home with red brick and white facade in a sunny neighborhood setting.",
+        "width": 6000,
+        "height": 4000
+      },
+      {
+        "filename": "brick_buildings_12.jpg",
+        "category": "brick_buildings",
+        "pexels_id": 25258898,
+        "photographer": "Vintage  Laka",
+        "photographer_url": "https://www.pexels.com/@vintage-laka-663423438",
+        "photo_url": "https://www.pexels.com/photo/a-red-brick-building-with-the-roofs-covered-in-snow-25258898/",
+        "description": "A snow-covered red brick building showcasing historic architecture in an urban setting during winter.",
+        "width": 5363,
+        "height": 3570
+      }
+    ],
+    "glass_steel": [
+      {
+        "filename": "glass_steel_01.jpg",
+        "category": "glass_steel",
+        "pexels_id": 443383,
+        "photographer": "SevenStorm JUHASZIMRUS",
+        "photographer_url": "https://www.pexels.com/@sevenstormphotography",
+        "photo_url": "https://www.pexels.com/photo/high-rise-buildings-443383/",
+        "description": "A striking view of a modern glass skyscraper reflecting the sky and clouds.",
+        "width": 5184,
+        "height": 3888
+      },
+      {
+        "filename": "glass_steel_02.jpg",
+        "category": "glass_steel",
+        "pexels_id": 2599538,
+        "photographer": "Brett Sayles",
+        "photographer_url": "https://www.pexels.com/@brett-sayles",
+        "photo_url": "https://www.pexels.com/photo/low-angle-photo-of-glass-buildings-2599538/",
+        "description": "Low angle view of contemporary glass office buildings reflecting a vibrant blue sky.",
+        "width": 5756,
+        "height": 3830
+      },
+      {
+        "filename": "glass_steel_03.jpg",
+        "category": "glass_steel",
+        "pexels_id": 2530342,
+        "photographer": "Golnar Sabzpoush  Rashidi",
+        "photographer_url": "https://www.pexels.com/@golnar-sabzpoush-rashidi-1317651",
+        "photo_url": "https://www.pexels.com/photo/low-angle-photo-of-glass-building-2530342/",
+        "description": "Low angle view of a modern glass skyscraper with reflective panels in an urban setting.",
+        "width": 6000,
+        "height": 4000
+      },
+      {
+        "filename": "glass_steel_04.jpg",
+        "category": "glass_steel",
+        "pexels_id": 2374987,
+        "photographer": "Nicolas Postiglioni",
+        "photographer_url": "https://www.pexels.com/@postiglioni",
+        "photo_url": "https://www.pexels.com/photo/architectural-photography-of-glass-building-2374987/",
+        "description": "Low angle view of modern glass building facade with dynamic reflections against a vivid blue sky.",
+        "width": 6000,
+        "height": 4000
+      },
+      {
+        "filename": "glass_steel_05.jpg",
+        "category": "glass_steel",
+        "pexels_id": 34627225,
+        "photographer": "Gera Cejas",
+        "photographer_url": "https://www.pexels.com/@gera-cejas-3616330",
+        "photo_url": "https://www.pexels.com/photo/stylish-woman-overlooking-buenos-aires-skyline-34627225/",
+        "description": "Confident woman in sunglasses stands in a skyscraper overlooking Buenos Aires cityscape.",
+        "width": 5886,
+        "height": 3924
+      },
+      {
+        "filename": "glass_steel_06.jpg",
+        "category": "glass_steel",
+        "pexels_id": 34627224,
+        "photographer": "Gera Cejas",
+        "photographer_url": "https://www.pexels.com/@gera-cejas-3616330",
+        "photo_url": "https://www.pexels.com/photo/cityscape-view-from-skyscraper-in-buenos-aires-34627224/",
+        "description": "Stylish woman overlooking Buenos Aires cityscape from a skyscraper, captured in daylight.",
+        "width": 6240,
+        "height": 4160
+      },
+      {
+        "filename": "glass_steel_07.jpg",
+        "category": "glass_steel",
+        "pexels_id": 34627218,
+        "photographer": "Gera Cejas",
+        "photographer_url": "https://www.pexels.com/@gera-cejas-3616330",
+        "photo_url": "https://www.pexels.com/photo/young-woman-overlooking-buenos-aires-cityscape-34627218/",
+        "description": "A stylish woman wearing sunglasses gazes over the Buenos Aires skyline from a high vantage point.",
+        "width": 4895,
+        "height": 3263
+      },
+      {
+        "filename": "glass_steel_08.jpg",
+        "category": "glass_steel",
+        "pexels_id": 34627190,
+        "photographer": "Gera Cejas",
+        "photographer_url": "https://www.pexels.com/@gera-cejas-3616330",
+        "photo_url": "https://www.pexels.com/photo/stylish-woman-in-urban-buenos-aires-setting-34627190/",
+        "description": "Fashionable woman in black with city backdrop in Buenos Aires",
+        "width": 5658,
+        "height": 3772
+      },
+      {
+        "filename": "glass_steel_09.jpg",
+        "category": "glass_steel",
+        "pexels_id": 34624023,
+        "photographer": "Jan van der Wolf",
+        "photographer_url": "https://www.pexels.com/@jan-van-der-wolf-11680885",
+        "photo_url": "https://www.pexels.com/photo/colorful-industrial-building-facade-with-abstract-symmetry-34624023/",
+        "description": "Symmetrical industrial building facade with green and yellow panels and geometric patterns. Vibrant and minimalistic.",
+        "width": 5878,
+        "height": 3918
+      },
+      {
+        "filename": "glass_steel_10.jpg",
+        "category": "glass_steel",
+        "pexels_id": 1192336,
+        "photographer": "lil artsy",
+        "photographer_url": "https://www.pexels.com/@lilartsy",
+        "photo_url": "https://www.pexels.com/photo/photo-of-hallway-1192336/",
+        "description": "Dark and moody view of an empty underground subway station with modern lighting and steel architecture.",
+        "width": 5787,
+        "height": 3832
+      },
+      {
+        "filename": "glass_steel_11.jpg",
+        "category": "glass_steel",
+        "pexels_id": 3058928,
+        "photographer": "JJ Jordan",
+        "photographer_url": "https://www.pexels.com/@jj-jordan-1589332",
+        "photo_url": "https://www.pexels.com/photo/black-and-yellow-train-close-up-photography-3058928/",
+        "description": "A sleek modern train at an urban railway station with commuters on the platform.",
+        "width": 4000,
+        "height": 2705
+      },
+      {
+        "filename": "glass_steel_12.jpg",
+        "category": "glass_steel",
+        "pexels_id": 2034379,
+        "photographer": "Paul Lichtblau",
+        "photographer_url": "https://www.pexels.com/@laup",
+        "photo_url": "https://www.pexels.com/photo/low-angle-photo-of-high-rise-building-2034379/",
+        "description": "Dynamic urban architecture captured through a low angle perspective of modern glass skyscrapers.",
+        "width": 6000,
+        "height": 4000
+      }
+    ],
+    "stone_facades": [
+      {
+        "filename": "stone_facades_01.jpg",
+        "category": "stone_facades",
+        "pexels_id": 34627351,
+        "photographer": "Micha\u0142 Robak",
+        "photographer_url": "https://www.pexels.com/@michalrobak",
+        "photo_url": "https://www.pexels.com/photo/charming-stone-cottage-with-black-shutters-34627351/",
+        "description": "",
+        "width": 6647,
+        "height": 4431
+      },
+      {
+        "filename": "stone_facades_02.jpg",
+        "category": "stone_facades",
+        "pexels_id": 34626017,
+        "photographer": "Caio Cezar",
+        "photographer_url": "https://www.pexels.com/@caiospil",
+        "photo_url": "https://www.pexels.com/photo/helsinki-parliament-house-on-a-cloudy-day-34626017/",
+        "description": "View of the iconic Parliament House in Helsinki, Finland, captured on an overcast day.",
+        "width": 4032,
+        "height": 3024
+      },
+      {
+        "filename": "stone_facades_03.jpg",
+        "category": "stone_facades",
+        "pexels_id": 34625755,
+        "photographer": "Le sixi\u00e8me r\u00eave",
+        "photographer_url": "https://www.pexels.com/@le-sixieme-reve-462544708",
+        "photo_url": "https://www.pexels.com/photo/stunning-view-of-hautefort-castle-france-34625755/",
+        "description": "Explore the historic and majestic Hautefort Castle in Nouvelle-Aquitaine, France.",
+        "width": 5394,
+        "height": 3596
+      },
+      {
+        "filename": "stone_facades_04.jpg",
+        "category": "stone_facades",
+        "pexels_id": 34612383,
+        "photographer": "Caleb Oquendo",
+        "photographer_url": "https://www.pexels.com/@caleboquendo",
+        "photo_url": "https://www.pexels.com/photo/classic-delorean-at-retro-gas-station-34612383/",
+        "description": "",
+        "width": 5076,
+        "height": 3384
+      },
+      {
+        "filename": "stone_facades_05.jpg",
+        "category": "stone_facades",
+        "pexels_id": 34626049,
+        "photographer": "Bo\u017eo Gunjajevi\u0107",
+        "photographer_url": "https://www.pexels.com/@diverzant",
+        "photo_url": "https://www.pexels.com/photo/grand-building-along-venice-canal-in-daytime-34626049/",
+        "description": "",
+        "width": 2738,
+        "height": 1825
+      },
+      {
+        "filename": "stone_facades_06.jpg",
+        "category": "stone_facades",
+        "pexels_id": 5385702,
+        "photographer": "Polina Tankilevitch",
+        "photographer_url": "https://www.pexels.com/@polina-tankilevitch",
+        "photo_url": "https://www.pexels.com/photo/woman-posing-while-holding-her-hair-5385702/",
+        "description": "Woman in orange long-sleeve top posing confidently against a marble wall.",
+        "width": 3000,
+        "height": 2000
+      },
+      {
+        "filename": "stone_facades_07.jpg",
+        "category": "stone_facades",
+        "pexels_id": 1005982,
+        "photographer": "Bogdan R. Anton",
+        "photographer_url": "https://www.pexels.com/@bogdan-r-anton-338246",
+        "photo_url": "https://www.pexels.com/photo/aerial-view-of-buildings-1005982/",
+        "description": "A dramatic aerial view of the Acropolis in Athens under cloudy skies, surrounded by the urban sprawl and lush greenery.",
+        "width": 5456,
+        "height": 3632
+      },
+      {
+        "filename": "stone_facades_08.jpg",
+        "category": "stone_facades",
+        "pexels_id": 34551395,
+        "photographer": "Andrew Patrick Photo",
+        "photographer_url": "https://www.pexels.com/@am83",
+        "photo_url": "https://www.pexels.com/photo/majestic-view-of-duomo-di-milano-against-blue-sky-34551395/",
+        "description": "Free stock photo of cathedral, catholicism, christianity",
+        "width": 4380,
+        "height": 2920
+      },
+      {
+        "filename": "stone_facades_09.jpg",
+        "category": "stone_facades",
+        "pexels_id": 966927,
+        "photographer": "eberhard grossgasteiger",
+        "photographer_url": "https://www.pexels.com/@eberhardgross",
+        "photo_url": "https://www.pexels.com/photo/grey-and-brown-brick-wall-966927/",
+        "description": "High-resolution image of a rustic stone wall showing detailed texture and pattern.",
+        "width": 5496,
+        "height": 3670
+      },
+      {
+        "filename": "stone_facades_10.jpg",
+        "category": "stone_facades",
+        "pexels_id": 2879602,
+        "photographer": "\ud835\udddb&\ud835\uddd6\ud835\udde2 \u3000",
+        "photographer_url": "https://www.pexels.com/@hngstrm",
+        "photo_url": "https://www.pexels.com/photo/brown-wooden-door-on-a-flat-bricked-wall-2879602/",
+        "description": "A minimalist stone brick wall featuring a simple wooden door, showcasing architectural design.",
+        "width": 4896,
+        "height": 3264
+      },
+      {
+        "filename": "stone_facades_11.jpg",
+        "category": "stone_facades",
+        "pexels_id": 7078687,
+        "photographer": "Laura Tancredi",
+        "photographer_url": "https://www.pexels.com/@laura-tancredi",
+        "photo_url": "https://www.pexels.com/photo/gray-wall-with-rows-of-bricks-7078687/",
+        "description": "A full-frame image of a seamless white brick wall texture, perfect for backgrounds and architectural designs.",
+        "width": 4353,
+        "height": 2902
+      },
+      {
+        "filename": "stone_facades_12.jpg",
+        "category": "stone_facades",
+        "pexels_id": 4936354,
+        "photographer": "cottonbro studio",
+        "photographer_url": "https://www.pexels.com/@cottonbro",
+        "photo_url": "https://www.pexels.com/photo/woman-in-gray-sweater-and-black-skirt-sitting-on-concrete-stairs-4936354/",
+        "description": "Woman sits on stone steps using smartphone with coffee and handbag, outdoors near wooden doors.",
+        "width": 6240,
+        "height": 4160
+      }
+    ],
+    "mixed_materials": [
+      {
+        "filename": "mixed_materials_01.jpg",
+        "category": "mixed_materials",
+        "pexels_id": 34620250,
+        "photographer": "Ivan Chumak",
+        "photographer_url": "https://www.pexels.com/@iohichu",
+        "photo_url": "https://www.pexels.com/photo/street-view-of-dancing-house-in-prague-34620250/",
+        "description": "",
+        "width": 6000,
+        "height": 3376
+      },
+      {
+        "filename": "mixed_materials_02.jpg",
+        "category": "mixed_materials",
+        "pexels_id": 34628031,
+        "photographer": "Scathefer Cool",
+        "photographer_url": "https://www.pexels.com/@scathefer-cool-2157253321",
+        "photo_url": "https://www.pexels.com/photo/modern-skyscraper-in-ciudad-de-guatemala-34628031/",
+        "description": "",
+        "width": 3060,
+        "height": 3047
+      },
+      {
+        "filename": "mixed_materials_03.jpg",
+        "category": "mixed_materials",
+        "pexels_id": 34607919,
+        "photographer": "Esteban Gilles",
+        "photographer_url": "https://www.pexels.com/@esteban-gilles-499431850",
+        "photo_url": "https://www.pexels.com/photo/black-and-white-crane-over-building-in-liege-34607919/",
+        "description": "A modern crane over a building in Li\u00e8ge, Belgium. Black and white architecture shot.",
+        "width": 3822,
+        "height": 2548
+      },
+      {
+        "filename": "mixed_materials_04.jpg",
+        "category": "mixed_materials",
+        "pexels_id": 34609629,
+        "photographer": "Ali Soheill",
+        "photographer_url": "https://www.pexels.com/@ali-soheill-2154370577",
+        "photo_url": "https://www.pexels.com/photo/modern-wavy-architectural-facade-design-34609629/",
+        "description": "Free stock photo of abstract",
+        "width": 8074,
+        "height": 5385
+      },
+      {
+        "filename": "mixed_materials_05.jpg",
+        "category": "mixed_materials",
+        "pexels_id": 34577425,
+        "photographer": "Felix Kiss",
+        "photographer_url": "https://www.pexels.com/@felix-kiss-568824727",
+        "photo_url": "https://www.pexels.com/photo/modern-wooden-interior-with-mountain-view-34577425/",
+        "description": "modern Architecture with the perfect view ",
+        "width": 5869,
+        "height": 3992
+      },
+      {
+        "filename": "mixed_materials_06.jpg",
+        "category": "mixed_materials",
+        "pexels_id": 1483146,
+        "photographer": "Shane Aldendorff",
+        "photographer_url": "https://www.pexels.com/@pluyar",
+        "photo_url": "https://www.pexels.com/photo/green-and-blue-multi-story-building-1483146/",
+        "description": "Explore the iconic Inntel Hotel Zaandam with its stunning stacked house design in the Netherlands.",
+        "width": 6000,
+        "height": 4000
+      },
+      {
+        "filename": "mixed_materials_07.jpg",
+        "category": "mixed_materials",
+        "pexels_id": 34624023,
+        "photographer": "Jan van der Wolf",
+        "photographer_url": "https://www.pexels.com/@jan-van-der-wolf-11680885",
+        "photo_url": "https://www.pexels.com/photo/colorful-industrial-building-facade-with-abstract-symmetry-34624023/",
+        "description": "Symmetrical industrial building facade with green and yellow panels and geometric patterns. Vibrant and minimalistic.",
+        "width": 5878,
+        "height": 3918
+      },
+      {
+        "filename": "mixed_materials_08.jpg",
+        "category": "mixed_materials",
+        "pexels_id": 34624049,
+        "photographer": "Jan van der Wolf",
+        "photographer_url": "https://www.pexels.com/@jan-van-der-wolf-11680885",
+        "photo_url": "https://www.pexels.com/photo/bright-red-garage-door-against-white-wall-34624049/",
+        "description": "Minimalist image featuring a vibrant red garage door with a modern aesthetic.",
+        "width": 6016,
+        "height": 4016
+      },
+      {
+        "filename": "mixed_materials_09.jpg",
+        "category": "mixed_materials",
+        "pexels_id": 34623973,
+        "photographer": "Jan van der Wolf",
+        "photographer_url": "https://www.pexels.com/@jan-van-der-wolf-11680885",
+        "photo_url": "https://www.pexels.com/photo/bright-yellow-industrial-building-roof-against-blue-sky-34623973/",
+        "description": "A bold geometric composition of a yellow industrial building roof set against a clear blue sky.",
+        "width": 5902,
+        "height": 3934
+      },
+      {
+        "filename": "mixed_materials_10.jpg",
+        "category": "mixed_materials",
+        "pexels_id": 34624010,
+        "photographer": "Jan van der Wolf",
+        "photographer_url": "https://www.pexels.com/@jan-van-der-wolf-11680885",
+        "photo_url": "https://www.pexels.com/photo/modern-architectural-facade-with-geometric-patterns-34624010/",
+        "description": "Vibrant chevron-patterned facade on a modern building, showcasing architectural design.",
+        "width": 6016,
+        "height": 4016
+      },
+      {
+        "filename": "mixed_materials_11.jpg",
+        "category": "mixed_materials",
+        "pexels_id": 34545866,
+        "photographer": "Thomas Caspari",
+        "photographer_url": "https://www.pexels.com/@thomas-caspari-768557222",
+        "photo_url": "https://www.pexels.com/photo/historical-architecture-of-schloss-braunfels-courtyard-34545866/",
+        "description": "View of the historic courtyard in Schloss Braunfels, Germany, showcasing classic architectural styles.",
+        "width": 4080,
+        "height": 3072
+      },
+      {
+        "filename": "mixed_materials_12.jpg",
+        "category": "mixed_materials",
+        "pexels_id": 972837,
+        "photographer": "Alex Cooper",
+        "photographer_url": "https://www.pexels.com/@alex-cooper-358580",
+        "photo_url": "https://www.pexels.com/photo/architectural-photography-of-glass-building-972837/",
+        "description": "Low angle view of a modern skyscraper with glass facade in a foggy cityscape.",
+        "width": 3091,
+        "height": 2048
+      },
+      {
+        "filename": "mixed_materials_13.jpg",
+        "category": "mixed_materials",
+        "pexels_id": 425190,
+        "photographer": "SevenStorm JUHASZIMRUS",
+        "photographer_url": "https://www.pexels.com/@sevenstormphotography",
+        "photo_url": "https://www.pexels.com/photo/beige-building-425190/",
+        "description": "Low angle view of a contemporary building with a glass facade against a blue sky.",
+        "width": 5184,
+        "height": 3888
+      },
+      {
+        "filename": "mixed_materials_14.jpg",
+        "category": "mixed_materials",
+        "pexels_id": 954417,
+        "photographer": "Matej",
+        "photographer_url": "https://www.pexels.com/@matej-117839",
+        "photo_url": "https://www.pexels.com/photo/photo-of-white-building-954417/",
+        "description": "Minimalist facade with clean lines and blue sky, showcasing contemporary architectural design.",
+        "width": 5184,
+        "height": 2916
+      },
+      {
+        "filename": "mixed_materials_15.jpg",
+        "category": "mixed_materials",
+        "pexels_id": 1616212,
+        "photographer": "Chris G",
+        "photographer_url": "https://www.pexels.com/@gochrisgoxyz",
+        "photo_url": "https://www.pexels.com/photo/grayscale-photo-of-concrete-structure-1616212/",
+        "description": "Detailed architectural facade in black and white, capturing classic design elements and intricate details.",
+        "width": 5482,
+        "height": 3655
+      }
+    ]
+  }
+}
