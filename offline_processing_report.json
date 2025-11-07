@@ -1,10 +1,10 @@
 {
-  "timestamp": "2025-11-05T10:14:16.188766",
+  "timestamp": "2025-11-07T10:20:03.735211",
   "processing": {
     "success": true,
-    "processed_count": 45,
-    "processing_time_seconds": 48.537534,
-    "images_per_second": 0.9271175581355245,
+    "processed_count": 51,
+    "processing_time_seconds": 56.363778,
+    "images_per_second": 0.9048364359110207,
     "initial_status": {
       "storage": {
         "total_images": 0,
@@ -21,11 +21,11 @@
           "batch_size": 10
         },
         "supported_formats": [
-          ".tiff",
-          ".jpg",
-          ".bmp",
-          ".jpeg",
           ".png",
+          ".bmp",
+          ".tiff",
+          ".jpeg",
+          ".jpg",
           ".webp"
         ],
         "batch_size": 10,
@@ -46,16 +46,16 @@
     },
     "final_status": {
       "storage": {
-        "total_images": 45,
+        "total_images": 51,
         "metadata_file": "image_metadata.json",
         "file_exists": true,
         "cache_loaded": true,
-        "file_size_bytes": 715351,
-        "file_size_mb": 0.68,
-        "last_modified": "2025-11-05T10:14:16.167715",
+        "file_size_bytes": 810999,
+        "file_size_mb": 0.77,
+        "last_modified": "2025-11-07T10:20:03.596488",
         "embedding_dimension": 512,
-        "total_embeddings": 45,
-        "avg_features_per_image": 2.0
+        "total_embeddings": 51,
+        "avg_features_per_image": 3.1
       },
       "processor": {
         "model_info": {
@@ -66,11 +66,11 @@
           "batch_size": 10
         },
         "supported_formats": [
-          ".tiff",
-          ".jpg",
-          ".bmp",
-          ".jpeg",
           ".png",
+          ".bmp",
+          ".tiff",
+          ".jpeg",
+          ".jpg",
           ".webp"
         ],
         "batch_size": 10,
@@ -94,172 +94,173 @@
       "categories": {
         "brick_buildings": {
           "exists": true,
-          "image_count": 10,
+          "image_count": 12,
           "files": [
-            "brick_apartment_07.jpg",
-            "brick_library_09.jpg",
-            "brick_warehouse_05.jpg",
-            "brown_brick_office_02.jpg",
-            "colonial_brick_house_10.jpg",
-            "historic_brick_church_03.jpg",
-            "modern_brick_facade_04.jpg",
-            "old_brick_factory_08.jpg",
-            "red_brick_house_01.jpg",
-            "red_brick_school_06.jpg"
+            "brick_buildings_01.jpg",
+            "brick_buildings_02.jpg",
+            "brick_buildings_03.jpg",
+            "brick_buildings_04.jpg",
+            "brick_buildings_05.jpg",
+            "brick_buildings_06.jpg",
+            "brick_buildings_07.jpg",
+            "brick_buildings_08.jpg",
+            "brick_buildings_09.jpg",
+            "brick_buildings_10.jpg",
+            "brick_buildings_11.jpg",
+            "brick_buildings_12.jpg"
           ]
         },
         "glass_steel": {
           "exists": true,
-          "image_count": 10,
+          "image_count": 12,
           "files": [
-            "contemporary_glass_house_04.jpg",
-            "corporate_headquarters_08.jpg",
-            "glass_curtain_wall_02.jpg",
-            "glass_residential_tower_09.jpg",
-            "modern_glass_library_10.jpg",
-            "modern_glass_museum_06.jpg",
-            "modern_office_tower_01.jpg",
-            "skyscraper_glass_facade_05.jpg",
-            "steel_frame_building_03.jpg",
-            "steel_glass_mall_07.jpg"
+            "glass_steel_01.jpg",
+            "glass_steel_02.jpg",
+            "glass_steel_03.jpg",
+            "glass_steel_04.jpg",
+            "glass_steel_05.jpg",
+            "glass_steel_06.jpg",
+            "glass_steel_07.jpg",
+            "glass_steel_08.jpg",
+            "glass_steel_09.jpg",
+            "glass_steel_10.jpg",
+            "glass_steel_11.jpg",
+            "glass_steel_12.jpg"
           ]
         },
         "stone_facades": {
           "exists": true,
-          "image_count": 10,
+          "image_count": 12,
           "files": [
-            "granite_bank_building_02.jpg",
-            "granite_memorial_07.jpg",
-            "limestone_courthouse_01.jpg",
-            "limestone_hotel_10.jpg",
-            "limestone_mansion_06.jpg",
-            "marble_government_04.jpg",
-            "sandstone_castle_08.jpg",
-            "sandstone_university_03.jpg",
-            "stone_bridge_09.jpg",
-            "stone_cathedral_05.jpg"
+            "stone_facades_01.jpg",
+            "stone_facades_02.jpg",
+            "stone_facades_03.jpg",
+            "stone_facades_04.jpg",
+            "stone_facades_05.jpg",
+            "stone_facades_06.jpg",
+            "stone_facades_07.jpg",
+            "stone_facades_08.jpg",
+            "stone_facades_09.jpg",
+            "stone_facades_10.jpg",
+            "stone_facades_11.jpg",
+            "stone_facades_12.jpg"
           ]
         },
         "mixed_materials": {
           "exists": true,
           "image_count": 15,
           "files": [
-            "brick_glass_office_03.jpg",
-            "brick_steel_loft_08.jpg",
-            "concrete_glass_museum_01.jpg",
-            "concrete_steel_stadium_04.jpg",
-            "concrete_wood_school_09.jpg",
-            "contemporary_mixed_house_12.jpg",
-            "eco_mixed_building_15.jpg",
-            "glass_stone_church_10.jpg",
-            "industrial_mixed_complex_13.jpg",
-            "metal_concrete_factory_06.jpg",
-            "mixed_material_mall_11.jpg",
-            "modern_mixed_apartment_14.jpg",
-            "stone_glass_hotel_07.jpg",
-            "wood_glass_pavilion_05.jpg",
-            "wood_steel_residence_02.jpg"
+            "mixed_materials_01.jpg",
+            "mixed_materials_02.jpg",
+            "mixed_materials_03.jpg",
+            "mixed_materials_04.jpg",
+            "mixed_materials_05.jpg",
+            "mixed_materials_06.jpg",
+            "mixed_materials_07.jpg",
+            "mixed_materials_08.jpg",
+            "mixed_materials_09.jpg",
+            "mixed_materials_10.jpg",
+            "mixed_materials_11.jpg",
+            "mixed_materials_12.jpg",
+            "mixed_materials_13.jpg",
+            "mixed_materials_14.jpg",
+            "mixed_materials_15.jpg"
           ]
         }
       },
-      "total_images": 45,
-      "supported_formats": 45,
+      "total_images": 51,
+      "supported_formats": 51,
       "validation_passed": true
     }
   },
   "validation": {
-    "total_metadata_entries": 45,
+    "total_metadata_entries": 51,
     "storage_stats": {
-      "total_images": 45,
+      "total_images": 51,
       "metadata_file": "image_metadata.json",
       "file_exists": true,
       "cache_loaded": true,
-      "file_size_bytes": 715351,
-      "file_size_mb": 0.68,
-      "last_modified": "2025-11-05T10:14:16.167715",
+      "file_size_bytes": 810999,
+      "file_size_mb": 0.77,
+      "last_modified": "2025-11-07T10:20:03.596488",
       "embedding_dimension": 512,
-      "total_embeddings": 45,
-      "avg_features_per_image": 2.0
+      "total_embeddings": 51,
+      "avg_features_per_image": 3.1
     },
     "sample_metadata": {
-      "images/brick_buildings/brick_apartment_07.jpg": {
-        "description": "Modern building with brown brick and well-proportioned windows",
+      "images/brick_buildings/brick_buildings_01.jpg": {
+        "description": "Contemporary building featuring brown brick facade",
         "features": [
           "brown brick",
+          "white brick",
           "brick facade",
           "red brick",
-          "white brick",
-          "concrete"
-        ],
-        "embedding_size": 512,
-        "file_size": 129049,
-        "dimensions": [
-          800,
-          600
-        ]
-      },
-      "images/brick_buildings/brick_library_09.jpg": {
-        "description": "Red brick building with stucco and contemporary roofline",
-        "features": [
-          "red brick",
-          "brick facade",
-          "brown brick",
-          "white brick",
           "stucco"
         ],
         "embedding_size": 512,
-        "file_size": 123688,
+        "file_size": 133027,
         "dimensions": [
-          800,
-          600
+          940,
+          627
         ]
       },
-      "images/brick_buildings/brick_warehouse_05.jpg": {
-        "description": "Brown brick building with contemporary roofline and well-proportioned windows",
+      "images/brick_buildings/brick_buildings_02.jpg": {
+        "description": "Contemporary building featuring modern facade",
         "features": [
-          "brown brick",
-          "red brick",
-          "brick facade",
-          "white brick",
-          "concrete"
+          "rectangular windows",
+          "small windows",
+          "symmetrical windows",
+          "large windows",
+          "balconies"
         ],
         "embedding_size": 512,
-        "file_size": 131926,
+        "file_size": 124007,
         "dimensions": [
-          800,
-          600
+          940,
+          627
         ]
       },
-      "images/brick_buildings/brown_brick_office_02.jpg": {
-        "description": "Brown brick building with contemporary roofline and well-proportioned windows",
+      "images/brick_buildings/brick_buildings_03.jpg": {
+        "description": "Contemporary mixed-use building featuring brick facade facade",
         "features": [
-          "brown brick",
           "brick facade",
-          "white brick",
-          "red brick",
-          "concrete"
+          "mixed-use building",
+          "rectangular windows",
+          "curtain wall",
+          "residential building"
         ],
         "embedding_size": 512,
-        "file_size": 127635,
+        "file_size": 113741,
         "dimensions": [
-          800,
-          600
+          867,
+          650
         ]
       },
-      "images/brick_buildings/colonial_brick_house_10.jpg": {
-        "description": "Brick facade building with decorative elements and contemporary roofline",
+      "images/brick_buildings/brick_buildings_04.jpg": {
+        "description": "Institutional building featuring modern facade and portico",
         "features": [
-          "brick facade",
-          "white brick",
-          "brown brick",
-          "red brick",
-          "decorative elements"
+          "institutional building",
+          "mixed-use building",
+          "mansard roof",
+          "portico"
         ],
         "embedding_size": 512,
-        "file_size": 103638,
+        "file_size": 90728,
         "dimensions": [
-          800,
-          600
+          940,
+          529
+        ]
+      },
+      "images/brick_buildings/brick_buildings_05.jpg": {
+        "description": "Modern building with clean lines and contemporary roofline",
+        "features": [
+          "institutional building"
+        ],
+        "embedding_size": 512,
+        "file_size": 93646,
+        "dimensions": [
+          867,
+          650
         ]
       }
     },
@@ -273,9 +274,9 @@
   },
   "summary": {
     "overall_success": true,
-    "total_images_processed": 45,
-    "processing_time": 48.537534,
-    "metadata_entries": 45,
+    "total_images_processed": 51,
+    "processing_time": 56.363778,
+    "metadata_entries": 51,
     "ready_for_search": true
   }
 }
