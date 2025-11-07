@@ -37,7 +37,6 @@ wheels/
 Thumbs.db
 
 # Application specific
-image_metadata.json
 *.log
 
 # Streamlit
