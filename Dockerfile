@@ -39,17 +39,13 @@ COPY . .
 # Create necessary directories
 RUN mkdir -p images logs
 
-# Ensure src is a proper Python package
-RUN touch src/__init__.py && \
-    touch src/models/__init__.py && \
-    touch src/processors/__init__.py && \
-    touch src/storage/__init__.py && \
-    touch src/web/__init__.py
-
 # Set environment variables for production
-ENV PYTHONPATH=/app:/app/src
+ENV PYTHONPATH=/app
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
+
+# Verify src directory structure was copied
+RUN ls -la src/ && ls -la src/models/ && ls -la src/processors/
 
 # Run the application using Python to properly handle package imports
 CMD ["python", "run_app.py"]
