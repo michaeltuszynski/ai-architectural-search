@@ -43,6 +43,9 @@ image_metadata.json
 # Streamlit
 .streamlit/
 
-# Model cache
+# Model cache (downloaded CLIP models, not source code)
 .cache/
-models/
+/models/
+*.pth
+*.pt
+*.bin
