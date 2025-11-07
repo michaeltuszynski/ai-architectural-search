@@ -9,8 +9,8 @@ from PIL import Image
 import numpy as np
 from datetime import datetime
 
-from src.models.config import AppConfig
-from src.models.image_metadata import ImageMetadata
+from ..models.config import AppConfig
+from ..models.image_metadata import ImageMetadata
 from .model_manager import ModelManager
 
 

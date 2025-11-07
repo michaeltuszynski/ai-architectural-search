@@ -6,7 +6,7 @@ from typing import List, Optional
 from pathlib import Path
 import os
 
-from src.models.search_models import SearchResult
+from ..models.search_models import SearchResult
 from .components import (
     render_no_results_message,
     render_error_message,

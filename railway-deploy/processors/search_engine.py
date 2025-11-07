@@ -8,13 +8,13 @@ from datetime import datetime, timedelta
 import time
 from pathlib import Path
 
-from src.models.config import AppConfig
-from src.models.search_models import Query, SearchResult
-from src.models.image_metadata import ImageMetadata
-from src.storage.metadata_store import MetadataStore
-from src.processors.model_manager import ModelManager
-from src.processors.query_processor import QueryProcessor
-from src.processors.result_ranker import ResultRanker
+from ..models.config import AppConfig
+from ..models.search_models import Query, SearchResult
+from ..models.image_metadata import ImageMetadata
+from ..storage.metadata_store import MetadataStore
+from ..processors.model_manager import ModelManager
+from ..processors.query_processor import QueryProcessor
+from ..processors.result_ranker import ResultRanker
 
 
 class SearchEngine:

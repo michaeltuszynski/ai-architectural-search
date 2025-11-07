@@ -9,7 +9,7 @@ from typing import Union, List, Optional, Tuple
 import logging
 from pathlib import Path
 
-from src.models.config import AppConfig
+from ..models.config import AppConfig
 
 
 class ModelManager:

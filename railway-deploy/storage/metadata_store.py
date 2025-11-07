@@ -10,8 +10,8 @@ import numpy as np
 import hashlib
 import os
 
-from src.models.config import AppConfig
-from src.models.image_metadata import ImageMetadata
+from ..models.config import AppConfig
+from ..models.image_metadata import ImageMetadata
 
 
 class MetadataStore:

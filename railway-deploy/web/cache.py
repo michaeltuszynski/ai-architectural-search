@@ -8,7 +8,7 @@ from typing import List, Optional, Dict, Any, Tuple
 from datetime import datetime, timedelta
 import logging
 
-from src.models.search_models import SearchResult, Query
+from ..models.search_models import SearchResult, Query
 
 
 class QueryCache:
@@ -214,7 +214,7 @@ def get_cached_search_engine():
         Cached SearchEngine instance
     """
     from config import AppConfig
-    from src.processors.search_engine import SearchEngine
+    from ..processors.search_engine import SearchEngine
     
     config = AppConfig()
     config.validate()

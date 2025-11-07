@@ -5,7 +5,7 @@ import streamlit as st
 from typing import List, Optional
 from pathlib import Path
 
-from src.models.search_models import SearchResult
+from ..models.search_models import SearchResult
 from .styles import get_confidence_class, format_confidence_score
 
 

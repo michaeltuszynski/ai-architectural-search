@@ -5,9 +5,9 @@ import logging
 from pathlib import Path
 from typing import Union, List, Optional
 
-from src.models.config import AppConfig
-from src.processors.image_processor import ImageProcessor
-from src.storage.metadata_store import MetadataStore
+from ..models.config import AppConfig
+from .image_processor import ImageProcessor
+from ..storage.metadata_store import MetadataStore
 
 
 class OfflineProcessor:
@@ -157,7 +157,7 @@ def main():
     )
     
     # Load configuration
-    from src.models.config import AppConfig
+    from ..models.config import AppConfig
     config = AppConfig.load_config()
     
     # Ensure directories exist

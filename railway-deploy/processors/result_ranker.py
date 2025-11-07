@@ -6,9 +6,9 @@ import logging
 from typing import List, Dict, Optional, Tuple, Callable
 from datetime import datetime
 
-from src.models.config import AppConfig
-from src.models.search_models import SearchResult
-from src.models.image_metadata import ImageMetadata
+from ..models.config import AppConfig
+from ..models.search_models import SearchResult
+from ..models.image_metadata import ImageMetadata
 
 
 class ResultRanker:

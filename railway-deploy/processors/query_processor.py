@@ -7,9 +7,9 @@ from typing import List, Dict, Optional, Tuple
 from datetime import datetime
 import time
 
-from src.models.config import AppConfig
-from src.models.search_models import Query, SearchResult
-from src.processors.model_manager import ModelManager
+from ..models.config import AppConfig
+from ..models.search_models import Query, SearchResult
+from ..processors.model_manager import ModelManager
 
 
 class QueryProcessor:

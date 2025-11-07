@@ -7,8 +7,8 @@ import logging
 from typing import List, Optional, Tuple
 from pathlib import Path
 
-from src.models.search_models import SearchResult, Query
-from src.processors.search_engine import SearchEngine
+from ..models.search_models import SearchResult, Query
+from ..processors.search_engine import SearchEngine
 from .components import (
     render_loading_spinner, 
     render_example_query_buttons,
