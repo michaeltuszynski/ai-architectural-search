@@ -62,7 +62,7 @@ def render_search_input() -> Optional[str]:
     """
     # Create search form
     with st.form(key="search_form", clear_on_submit=False):
-        col1, col2 = st.columns([4, 1])
+        col1, col2 = st.columns([3.5, 1])
         
         with col1:
             query_text = st.text_input(
@@ -73,6 +73,8 @@ def render_search_input() -> Optional[str]:
             )
         
         with col2:
+            # Add spacing to align button with input
+            st.markdown("<style>.stButton button {white-space: nowrap !important; padding: 0.5rem 1rem !important;}</style>", unsafe_allow_html=True)
             search_clicked = st.form_submit_button(
                 "🔍 Search", 
                 use_container_width=True,
