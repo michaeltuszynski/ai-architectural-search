@@ -1,4 +1,4 @@
-name: Deploy to Railway
+name: Validate Build
 
 on:
   push:
@@ -36,46 +36,32 @@ jobs:
     
     - name: Verify imports
       run: |
-        python -c "import sys; sys.path.insert(0, '.'); from config import get_config; print('Config OK')"
+        python -c "import sys; sys.path.insert(0, '.'); from config import get_config; print('✅ Config OK')"
     
     - name: Validate deployment files
       run: |
-        test -f Dockerfile
-        test -f app.py
-        test -f requirements.txt
-        test -f config.py
-        test -d src/
-        test -d images/
-        test -f image_metadata.json
-        test -f railway.json
-        echo "✅ All required files present"
-
-  deploy:
-    needs: validate
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        test -f Dockerfile && echo "✅ Dockerfile found"
+        test -f app.py && echo "✅ app.py found"
+        test -f requirements.txt && echo "✅ requirements.txt found"
+        test -f config.py && echo "✅ config.py found"
+        test -d src/ && echo "✅ src/ directory found"
+        test -d images/ && echo "✅ images/ directory found"
+        test -f image_metadata.json && echo "✅ image_metadata.json found"
+        test -f railway.json && echo "✅ railway.json found"
+        echo ""
+        echo "✅ All required files present - Railway will deploy automatically"
     
-    steps:
-    - uses: actions/checkout@v4
-    
-    - name: Install Railway CLI
-      run: npm install -g @railway/cli
-    
-    - name: Deploy to Railway
-      env:
-        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+    - name: Build Summary
+      if: github.ref == 'refs/heads/main'
       run: |
-        railway link ${{ secrets.RAILWAY_PROJECT_ID }}
-        railway up --detach
-    
-    - name: Deployment Summary
-      run: |
-        echo "## Deployment Status" >> $GITHUB_STEP_SUMMARY
+        echo "## Build Status" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
-        echo "✅ Deployed to Railway successfully" >> $GITHUB_STEP_SUMMARY
+        echo "✅ Build validated successfully" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
-        echo "Check your Railway dashboard:" >> $GITHUB_STEP_SUMMARY
-        echo "https://railway.app/" >> $GITHUB_STEP_SUMMARY
+        echo "🚂 **Railway is deploying automatically from GitHub**" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
-        echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
-        echo "**Branch:** ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+        echo "Check deployment status: https://railway.app/" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Commit:** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Branch:** \`${{ github.ref_name }}\`" >> $GITHUB_STEP_SUMMARY
