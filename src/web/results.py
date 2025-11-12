@@ -55,7 +55,7 @@ def render_result_card(result: SearchResult, index: int, column_width: str = "10
                 # Display image with caption
                 st.image(
                     result.image_path,
-                    caption=f"Match: {format_confidence_score(result.confidence_score)}",
+                    caption=f"Relevance: {format_confidence_score(result.confidence_score)}",
                     use_column_width=True
                 )
             except Exception as e:
@@ -65,11 +65,11 @@ def render_result_card(result: SearchResult, index: int, column_width: str = "10
             # Show placeholder for missing image
             render_image_placeholder(result.image_path, "Image file not found")
         
-        # Confidence score badge (always show)
+        # Relevance score badge (always show)
         confidence_class = get_confidence_class(result.confidence_score)
         st.markdown(f"""
         <div class="{confidence_class}" style="margin: 0.5rem 0;">
-            {format_confidence_score(result.confidence_score)} Confidence
+            Relevance: {format_confidence_score(result.confidence_score)}
         </div>
         """, unsafe_allow_html=True)
         
@@ -104,32 +104,30 @@ def render_result_card(result: SearchResult, index: int, column_width: str = "10
         # Additional details in expander (with error handling)
         with st.expander("🔍 View Details", expanded=False):
             try:
-                col1, col2 = st.columns(2)
+                # Validate similarity score
+                sim_score = getattr(result, 'similarity_score', 0.0)
+                if isinstance(sim_score, (int, float)) and -1 <= sim_score <= 1:
+                    st.write(f"**Similarity Score:** {sim_score:.3f}")
+                else:
+                    st.write(f"**Similarity Score:** N/A")
                 
-                with col1:
-                    # Validate similarity score
-                    sim_score = getattr(result, 'similarity_score', 0.0)
-                    if isinstance(sim_score, (int, float)) and -1 <= sim_score <= 1:
-                        st.metric("Similarity Score", f"{sim_score:.3f}")
-                    else:
-                        st.metric("Similarity Score", "N/A")
-                    
-                    # File name (with error handling)
-                    try:
-                        file_name = Path(result.image_path).name
-                        st.write(f"**File:** `{file_name}`")
-                    except Exception:
-                        st.write(f"**File:** `{result.image_path}`")
+                # Relevance score
+                st.write(f"**Relevance Score:** {format_confidence_score(result.confidence_score)}")
                 
-                with col2:
-                    st.metric("Confidence", format_confidence_score(result.confidence_score))
-                    st.write(f"**Path:** `{result.image_path}`")
-                    
-                    # Image status
-                    if image_exists:
-                        st.success("✅ Image accessible")
-                    else:
-                        st.error("❌ Image missing")
+                # File name (with error handling)
+                try:
+                    file_name = Path(result.image_path).name
+                    st.write(f"**File:** `{file_name}`")
+                except Exception:
+                    st.write(f"**File:** `{result.image_path}`")
+                
+                st.write(f"**Path:** `{result.image_path}`")
+                
+                # Image status
+                if image_exists:
+                    st.success("✅ Image accessible")
+                else:
+                    st.error("❌ Image missing")
                 
                 # All features (if available)
                 if hasattr(result, 'features') and result.features and len(result.features) > 6:
@@ -233,7 +231,7 @@ def render_results_list(results: List[SearchResult]):
 
 def render_results_header(results: List[SearchResult], query: str, stats: dict):
     """
-    Render header information for search results.
+    Render header information for search results with contextual help.
     
     Args:
         results: List of search results
@@ -243,7 +241,7 @@ def render_results_header(results: List[SearchResult], query: str, stats: dict):
     num_results = len(results)
     search_time = stats.get('search_time', 0)
     
-    # Results summary
+    # Results summary with improved messaging
     st.markdown(f"""
     ### 📋 Search Results
     
@@ -252,7 +250,25 @@ def render_results_header(results: List[SearchResult], query: str, stats: dict):
     
     if num_results > 0:
         avg_confidence = stats.get('avg_confidence', 0)
-        st.markdown(f"Average confidence: **{format_confidence_score(avg_confidence)}**")
+        
+        # Determine overall match quality
+        if avg_confidence >= 0.35:
+            quality_message = "Strong matches found"
+        elif avg_confidence >= 0.25:
+            quality_message = "Good matches found"
+        else:
+            quality_message = "Matches found"
+        
+        st.markdown(f"Average relevance: **{format_confidence_score(avg_confidence)}** — {quality_message}")
+        
+        # Add contextual help text about relevance scores
+        st.markdown("""
+        <div class="score-explanation">
+            <strong>ℹ️ Understanding Relevance Scores:</strong> 
+            Relevance scores show semantic similarity between your query and each image. 
+            Scores above 30% indicate strong matches. Higher scores = closer alignment with your specific query terms.
+        </div>
+        """, unsafe_allow_html=True)
 
 
 def render_results_controls(results: List[SearchResult]) -> dict:
@@ -309,6 +325,33 @@ def render_results_controls(results: List[SearchResult]) -> dict:
     }
 
 
+def render_about_scores_section():
+    """Render expandable section explaining search scores."""
+    with st.expander("ℹ️ About Search Scores", expanded=False):
+        st.markdown("""
+        ### Understanding Relevance Scores
+        
+        These relevance scores are generated using **CLIP AI**, which measures semantic similarity 
+        between your natural language query and image content.
+        
+        **Important to know:**
+        - Unlike classification confidence percentages, similarity scores typically range from **20-50%** for relevant matches
+        - A score of **35%+ indicates a strong match** with your query
+        - Scores of **25-35% indicate good matches** that are semantically related
+        - What matters most is that the AI has correctly identified images matching your query
+        - The scores help **rank results by relevance**, with higher scores showing closer alignment
+        
+        **How to interpret scores:**
+        - 🟢 **Strong Match (35%+)**: Image closely aligns with your specific query terms
+        - 🟡 **Good Match (25-35%)**: Image is semantically related to your query
+        - ⚪ **Weak Match (<25%)**: Image has some relevance but may not be ideal
+        
+        The AI uses advanced semantic understanding to find images that match the *meaning* of your 
+        query, not just exact keyword matches. This is why even "lower" percentages can represent 
+        excellent matches!
+        """)
+
+
 def render_search_results(results: List[SearchResult], query: str, stats: dict):
     """
     Render complete search results section with controls and display.
@@ -360,6 +403,10 @@ def render_search_results(results: List[SearchResult], query: str, stats: dict):
             </p>
         </div>
         """, unsafe_allow_html=True)
+    
+    # Add "About Search Scores" section at the bottom
+    st.markdown("<br>", unsafe_allow_html=True)
+    render_about_scores_section()
 
 
 def render_empty_state():

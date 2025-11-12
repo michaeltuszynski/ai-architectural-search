@@ -75,9 +75,9 @@ def render_search_stats(stats: dict):
     
     with col3:
         st.metric(
-            "Avg Confidence", 
+            "Avg Relevance", 
             f"{stats.get('avg_confidence', 0):.1%}",
-            help="Average confidence score"
+            help="Average relevance score across all results"
         )
 
 
@@ -102,18 +102,18 @@ def render_result_card(result: SearchResult, index: int):
         try:
             st.image(
                 str(image_path), 
-                caption=f"Confidence: {format_confidence_score(result.confidence_score)}",
+                caption=f"Relevance: {format_confidence_score(result.confidence_score)}",
                 use_column_width=True
             )
         except Exception as e:
             st.error(f"Error loading image: {e}")
             return
         
-        # Confidence score badge
+        # Relevance score badge with color-coded indicator
         confidence_class = get_confidence_class(result.confidence_score)
         st.markdown(f"""
         <div class="{confidence_class}">
-            {format_confidence_score(result.confidence_score)} Match
+            Match Strength: {format_confidence_score(result.confidence_score)}
         </div>
         """, unsafe_allow_html=True)
         

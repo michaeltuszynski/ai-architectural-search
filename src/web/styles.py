@@ -68,24 +68,64 @@ def load_custom_css():
         padding: 1rem;
     }
     
-    .confidence-score {
+    /* Relevance score badges with color-coded indicators */
+    .relevance-score {
         display: inline-block;
-        background: #28a745;
-        color: white;
-        padding: 0.25rem 0.5rem;
-        border-radius: 15px;
-        font-size: 0.8rem;
-        font-weight: bold;
+        padding: 0.4rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
         margin-bottom: 0.5rem;
+        border: 2px solid;
     }
     
-    .confidence-score.medium {
-        background: #ffc107;
-        color: #212529;
+    .relevance-score.strong {
+        background: #d4edda;
+        color: #155724;
+        border-color: #28a745;
     }
     
-    .confidence-score.low {
-        background: #6c757d;
+    .relevance-score.good {
+        background: #fff3cd;
+        color: #856404;
+        border-color: #ffc107;
+    }
+    
+    .relevance-score.weak {
+        background: #e2e3e5;
+        color: #383d41;
+        border-color: #6c757d;
+    }
+    
+    /* Info icon tooltip styling */
+    .info-tooltip {
+        display: inline-block;
+        margin-left: 0.5rem;
+        cursor: help;
+        color: #007bff;
+        font-size: 1rem;
+        vertical-align: middle;
+    }
+    
+    .info-tooltip:hover {
+        color: #0056b3;
+    }
+    
+    /* Score explanation section */
+    .score-explanation {
+        background: #f8f9fa;
+        border-left: 4px solid #007bff;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        margin: 1.5rem 0;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    .score-explanation h4 {
+        color: #007bff;
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
     }
     
     .result-description {
@@ -250,31 +290,58 @@ def load_custom_css():
 
 def get_confidence_class(confidence_score: float) -> str:
     """
-    Get CSS class for confidence score styling.
+    Get CSS class for relevance score styling based on CLIP similarity ranges.
     
     Args:
-        confidence_score: Confidence score between 0 and 1
+        confidence_score: Similarity score between 0 and 1
         
     Returns:
         CSS class name for styling
     """
-    if confidence_score >= 0.7:
-        return "confidence-score"
-    elif confidence_score >= 0.4:
-        return "confidence-score medium"
-    else:
-        return "confidence-score low"
+    if confidence_score >= 0.35:  # Strong match
+        return "relevance-score strong"
+    elif confidence_score >= 0.25:  # Good match
+        return "relevance-score good"
+    else:  # Weak match
+        return "relevance-score weak"
 
 
 def format_confidence_score(confidence_score: float) -> str:
     """
-    Format confidence score for display.
+    Format relevance score for display with contextual label.
     
     Args:
-        confidence_score: Confidence score between 0 and 1
+        confidence_score: Similarity score between 0 and 1
         
     Returns:
-        Formatted confidence score string
+        Formatted relevance score string with match quality indicator
     """
     percentage = confidence_score * 100
-    return f"{percentage:.1f}%"
+    
+    # Add match quality label based on score
+    if confidence_score >= 0.35:
+        quality = "Strong Match"
+    elif confidence_score >= 0.25:
+        quality = "Good Match"
+    else:
+        quality = "Weak Match"
+    
+    return f"{percentage:.1f}% ({quality})"
+
+
+def get_match_quality_label(confidence_score: float) -> str:
+    """
+    Get match quality label for a given score.
+    
+    Args:
+        confidence_score: Similarity score between 0 and 1
+        
+    Returns:
+        Match quality label string
+    """
+    if confidence_score >= 0.35:
+        return "Strong Match"
+    elif confidence_score >= 0.25:
+        return "Good Match"
+    else:
+        return "Weak Match"
