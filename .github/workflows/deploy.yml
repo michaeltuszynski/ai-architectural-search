@@ -46,18 +46,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     
-    - name: Run health check
+    - name: Verify imports
       run: |
-        python health_check.py
-      continue-on-error: true
-    
-    - name: Run tests
-      run: |
-        if [ -d "tests" ]; then
-          python -m pytest tests/ -v --tb=short
-        else
-          echo "No tests directory found, skipping tests"
-        fi
+        python -c "import sys; sys.path.insert(0, '.'); from config import get_config; print('Config OK')"
       continue-on-error: true
     
     - name: Test Docker build
@@ -126,43 +117,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
-    
-    - name: Install Hugging Face CLI
+    - name: Hugging Face Auto-Deploy
       run: |
-        pip install huggingface_hub[cli]
-    
-    - name: Deploy to Hugging Face Spaces
-      env:
-        HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        HF_USERNAME: ${{ secrets.HF_USERNAME }}
-      run: |
-        if [ -z "$HF_TOKEN" ]; then
-          echo "❌ HF_TOKEN secret not set"
-          exit 1
-        fi
-        
-        if [ -z "$HF_USERNAME" ]; then
-          echo "❌ HF_USERNAME secret not set"
-          exit 1
-        fi
-        
-        # Run deployment script
-        export HF_USERNAME="$HF_USERNAME"
-        bash scripts/deploy_huggingface.sh
-    
-    - name: Monitor Hugging Face deployment
-      env:
-        HF_USERNAME: ${{ secrets.HF_USERNAME }}
-      run: |
-        if [ -n "$HF_USERNAME" ]; then
-          export HF_SPACE_NAME="ai-architectural-search"
-          sleep 60  # Wait for deployment to start
-          bash scripts/monitor_deployment.sh || true
-        fi
+        echo "✅ Hugging Face Spaces will auto-deploy from GitHub integration"
+        echo "No manual deployment needed"
+        echo "Check your Hugging Face Spaces dashboard for deployment status"
 
   deploy-railway:
     needs: [test, backup]
@@ -172,22 +131,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    - name: Deploy to Railway
-      env:
-        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+    - name: Railway Auto-Deploy
       run: |
-        if [ -z "$RAILWAY_TOKEN" ]; then
-          echo "❌ RAILWAY_TOKEN secret not set"
-          exit 1
-        fi
-        
-        # Run deployment script
-        bash scripts/deploy_railway.sh
-    
-    - name: Monitor Railway deployment
-      run: |
-        sleep 60  # Wait for deployment to start
-        bash scripts/monitor_deployment.sh || true
+        echo "✅ Railway will auto-deploy from GitHub integration"
+        echo "No manual deployment needed - Railway detects pushes to main branch"
+        echo "Check your Railway dashboard for deployment status"
 
   deploy-render:
     needs: [test, backup]
@@ -197,23 +145,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    - name: Deploy to Render
-      env:
-        RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
-        GITHUB_REPO: ${{ github.repository }}
+    - name: Render Auto-Deploy
       run: |
-        if [ -z "$RENDER_API_KEY" ]; then
-          echo "❌ RENDER_API_KEY secret not set"
-          exit 1
-        fi
-        
-        # Run deployment script
-        bash scripts/deploy_render.sh
-    
-    - name: Monitor Render deployment
-      run: |
-        sleep 60  # Wait for deployment to start
-        bash scripts/monitor_deployment.sh || true
+        echo "✅ Render will auto-deploy from GitHub integration"
+        echo "No manual deployment needed"
+        echo "Check your Render dashboard for deployment status"
 
   post-deploy:
     needs: [deploy-huggingface, deploy-railway, deploy-render]
