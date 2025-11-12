@@ -1,4 +1,4 @@
-name: Build and Validate
+name: Deploy to Railway
 
 on:
   push:
@@ -40,7 +40,6 @@ jobs:
     
     - name: Validate deployment files
       run: |
-        # Check if required deployment files exist
         test -f Dockerfile
         test -f app.py
         test -f requirements.txt
@@ -50,17 +49,32 @@ jobs:
         test -f image_metadata.json
         test -f railway.json
         echo "✅ All required files present"
+
+  deploy:
+    needs: validate
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     
-    - name: Deployment Info
-      if: github.ref == 'refs/heads/main'
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install Railway CLI
+      run: npm install -g @railway/cli
+    
+    - name: Deploy to Railway
+      env:
+        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+      run: |
+        railway link ${{ secrets.RAILWAY_PROJECT_ID }}
+        railway up --detach
+    
+    - name: Deployment Summary
       run: |
         echo "## Deployment Status" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
-        echo "✅ Build validated successfully" >> $GITHUB_STEP_SUMMARY
+        echo "✅ Deployed to Railway successfully" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
-        echo "🚂 **Railway will auto-deploy from GitHub integration**" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "Check your Railway dashboard for deployment status:" >> $GITHUB_STEP_SUMMARY
+        echo "Check your Railway dashboard:" >> $GITHUB_STEP_SUMMARY
         echo "https://railway.app/" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
