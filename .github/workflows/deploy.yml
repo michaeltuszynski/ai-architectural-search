@@ -1,28 +1,16 @@
-name: Deploy AI Architectural Search
+name: Build and Validate
 
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-  workflow_dispatch:
-    inputs:
-      platform:
-        description: 'Deployment platform'
-        required: true
-        default: 'huggingface'
-        type: choice
-        options:
-        - huggingface
-        - railway
-        - render
-        - all
 
 env:
   PYTHON_VERSION: '3.9'
 
 jobs:
-  test:
+  validate:
     runs-on: ubuntu-latest
     
     steps:
@@ -49,7 +37,6 @@ jobs:
     - name: Verify imports
       run: |
         python -c "import sys; sys.path.insert(0, '.'); from config import get_config; print('Config OK')"
-      continue-on-error: true
     
     - name: Test Docker build
       run: |
@@ -67,162 +54,20 @@ jobs:
         test -d src/
         test -d images/
         test -f image_metadata.json
-        echo "All required files present"
-
-  backup:
-    needs: test
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+        test -f railway.json
+        echo "✅ All required files present"
     
-    steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0  # Full history for backup
-    
-    - name: Create deployment backup
+    - name: Deployment Info
+      if: github.ref == 'refs/heads/main'
       run: |
-        mkdir -p backups
-        backup_name="github_deploy_$(date +%Y%m%d_%H%M%S)"
-        mkdir -p "backups/$backup_name"
-        
-        # Backup key files
-        cp -r src/ "backups/$backup_name/" || true
-        cp config.py requirements.txt app.py Dockerfile "backups/$backup_name/" || true
-        
-        # Create backup manifest
-        cat > "backups/$backup_name/backup_manifest.json" << EOF
-        {
-          "backup_name": "$backup_name",
-          "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
-          "git_commit": "${{ github.sha }}",
-          "git_branch": "${{ github.ref_name }}",
-          "workflow_run": "${{ github.run_id }}"
-        }
-        EOF
-        
-        echo "Backup created: $backup_name"
-    
-    - name: Upload backup artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: deployment-backup
-        path: backups/
-        retention-days: 30
-
-  deploy-huggingface:
-    needs: [test, backup]
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && (github.event.inputs.platform == 'huggingface' || github.event.inputs.platform == 'all' || github.event.inputs.platform == '')
-    
-    steps:
-    - uses: actions/checkout@v4
-    
-    - name: Hugging Face Auto-Deploy
-      run: |
-        echo "✅ Hugging Face Spaces will auto-deploy from GitHub integration"
-        echo "No manual deployment needed"
-        echo "Check your Hugging Face Spaces dashboard for deployment status"
-
-  deploy-railway:
-    needs: [test, backup]
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && (github.event.inputs.platform == 'railway' || github.event.inputs.platform == 'all')
-    
-    steps:
-    - uses: actions/checkout@v4
-    
-    - name: Railway Auto-Deploy
-      run: |
-        echo "✅ Railway will auto-deploy from GitHub integration"
-        echo "No manual deployment needed - Railway detects pushes to main branch"
-        echo "Check your Railway dashboard for deployment status"
-
-  deploy-render:
-    needs: [test, backup]
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && (github.event.inputs.platform == 'render' || github.event.inputs.platform == 'all')
-    
-    steps:
-    - uses: actions/checkout@v4
-    
-    - name: Render Auto-Deploy
-      run: |
-        echo "✅ Render will auto-deploy from GitHub integration"
-        echo "No manual deployment needed"
-        echo "Check your Render dashboard for deployment status"
-
-  post-deploy:
-    needs: [deploy-huggingface, deploy-railway, deploy-render]
-    runs-on: ubuntu-latest
-    if: always() && github.ref == 'refs/heads/main'
-    
-    steps:
-    - uses: actions/checkout@v4
-    
-    - name: Deployment Summary
-      run: |
-        echo "## Deployment Summary" >> $GITHUB_STEP_SUMMARY
+        echo "## Deployment Status" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
-        
-        # Check job results
-        if [ "${{ needs.deploy-huggingface.result }}" = "success" ]; then
-          echo "✅ Hugging Face Spaces: Deployed successfully" >> $GITHUB_STEP_SUMMARY
-        elif [ "${{ needs.deploy-huggingface.result }}" = "failure" ]; then
-          echo "❌ Hugging Face Spaces: Deployment failed" >> $GITHUB_STEP_SUMMARY
-        elif [ "${{ needs.deploy-huggingface.result }}" = "skipped" ]; then
-          echo "⏭️ Hugging Face Spaces: Skipped" >> $GITHUB_STEP_SUMMARY
-        fi
-        
-        if [ "${{ needs.deploy-railway.result }}" = "success" ]; then
-          echo "✅ Railway: Deployed successfully" >> $GITHUB_STEP_SUMMARY
-        elif [ "${{ needs.deploy-railway.result }}" = "failure" ]; then
-          echo "❌ Railway: Deployment failed" >> $GITHUB_STEP_SUMMARY
-        elif [ "${{ needs.deploy-railway.result }}" = "skipped" ]; then
-          echo "⏭️ Railway: Skipped" >> $GITHUB_STEP_SUMMARY
-        fi
-        
-        if [ "${{ needs.deploy-render.result }}" = "success" ]; then
-          echo "✅ Render: Deployed successfully" >> $GITHUB_STEP_SUMMARY
-        elif [ "${{ needs.deploy-render.result }}" = "failure" ]; then
-          echo "❌ Render: Deployment failed" >> $GITHUB_STEP_SUMMARY
-        elif [ "${{ needs.deploy-render.result }}" = "skipped" ]; then
-          echo "⏭️ Render: Skipped" >> $GITHUB_STEP_SUMMARY
-        fi
-        
+        echo "✅ Build validated successfully" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "🚂 **Railway will auto-deploy from GitHub integration**" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "Check your Railway dashboard for deployment status:" >> $GITHUB_STEP_SUMMARY
+        echo "https://railway.app/" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
         echo "**Branch:** ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
-        echo "**Workflow:** ${{ github.run_id }}" >> $GITHUB_STEP_SUMMARY
-    
-    - name: Create deployment issue on failure
-      if: failure()
-      uses: actions/github-script@v6
-      with:
-        script: |
-          github.rest.issues.create({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            title: `Deployment failed - ${context.sha.substring(0, 7)}`,
-            body: `
-            ## Deployment Failure Report
-            
-            **Commit:** ${context.sha}
-            **Branch:** ${context.ref}
-            **Workflow Run:** ${context.runId}
-            **Timestamp:** ${new Date().toISOString()}
-            
-            One or more deployments failed. Please check the workflow logs for details.
-            
-            ### Failed Jobs:
-            - Hugging Face: ${{ needs.deploy-huggingface.result }}
-            - Railway: ${{ needs.deploy-railway.result }}
-            - Render: ${{ needs.deploy-render.result }}
-            
-            ### Next Steps:
-            1. Check workflow logs for error details
-            2. Verify deployment secrets are configured
-            3. Test deployment locally using \`scripts/deploy.sh\`
-            4. Consider rolling back using backup artifacts
-            `,
-            labels: ['deployment', 'bug']
-          })
