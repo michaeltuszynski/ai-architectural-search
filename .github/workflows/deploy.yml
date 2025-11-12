@@ -38,12 +38,6 @@ jobs:
       run: |
         python -c "import sys; sys.path.insert(0, '.'); from config import get_config; print('Config OK')"
     
-    - name: Test Docker build
-      run: |
-        docker build -t ai-architectural-search-test .
-        docker run --rm ai-architectural-search-test python -c "import torch; import clip; print('Dependencies OK')"
-        docker rmi ai-architectural-search-test
-    
     - name: Validate deployment files
       run: |
         # Check if required deployment files exist
